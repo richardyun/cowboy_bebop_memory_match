@@ -10,13 +10,13 @@ const imageArray = [
   'assets/images/spike.jpg',
   'assets/images/vicious.jpg',
 ];
-let duplicatedImageArray = [];
 let shuffledDuplicatedImageArray = [];
 
 function initiateApp() {
-  duplicatedImageArray = duplicateArray(imageArray);
+  const duplicatedImageArray = duplicateArray(imageArray);
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);
   createMultipleCardElements();
+  $(".card").on("click", ".cardFace", handleCardClick);
 }
 
 function duplicateArray(someArray) {
@@ -34,12 +34,24 @@ function shuffleArray(someArray) {
 }
 
 function generateSingleCardElements(imageURL) {
-  let cardDivs = $("<div class='card'>")
+  const cardDivs = $("<div class='card'>")
     .append("<div class='image cardFace'>")
     .append("<div class='image cardBack' style='background-image: url(" + imageURL + ")'>");
   $(".cardsContainer").append(cardDivs);
 }
 
 function createMultipleCardElements() {
-  shuffledDuplicatedImageArray.map(imageURL => generateSingleCardElements(imageURL))
+  shuffledDuplicatedImageArray.map(imageURL => generateSingleCardElements(imageURL));
+}
+
+function handleCardClick(event) {
+  let firstCardClicked = null;
+  let secondCardClicked = null;
+  if (!firstCardClicked) {
+    firstCardClicked = $(event.currentTarget).addClass("hidden");
+    console.log(event.currentTarget);
+  } else {
+    secondCardClicked = $(event.currentTarget).addClass("hidden");
+    console.log(event.currentTarget);
+  }
 }

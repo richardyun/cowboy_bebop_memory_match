@@ -49,8 +49,11 @@ main {
 }
 .cardFace {
   background-color: gray;
+  z-index: 1;
 }
 .cardBack {
   background-color: red;
-  /* z-index: -1; */
+}
+.hidden {
+  display: none;
 }
