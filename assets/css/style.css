@@ -1,0 +1,56 @@
+body {
+  height: 100vh;
+  background-color: tan;
+  border: 1px solid black;
+  margin: 0;
+  /* overflow: hidden; */
+}
+header {
+  background-color: lightblue;
+  border: 1px solid black;
+  height: 12vh;
+  margin-bottom: 1vmin;
+}
+.asideOne {
+  margin-left: 1vmin;
+}
+.asideOne, .asideTwo {
+  width: 20%;
+  height: 85vh;
+  background-color: green;
+  border: 1px solid black;
+  display: inline-block;
+}
+main {
+  width: 57%;
+  height: 85vh;
+  background-color: palevioletred;
+  border: 1px solid black;
+  display: inline-block;
+}
+.cardsContainer {
+  height: 100%;
+  border: 1px solid black;
+}
+.card {
+  height: 25%;
+  width: 25%;
+  position: relative;
+  float: left;
+}
+.image {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid black;
+  position: absolute;
+}
+.cardFace {
+  background-color: gray;
+}
+.cardBack {
+  background-color: red;
+  /* z-index: -1; */
+}
