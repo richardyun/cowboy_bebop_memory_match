@@ -1,15 +1,15 @@
 $(document).ready(initiateApp);
 
 const imageArray = [
-  'assets/images/annie.jpg',
-  'assets/images/edward.jpg',
-  'assets/images/ein.jpg',
-  'assets/images/faye.jpg',
-  'assets/images/jet.jpg',
-  'assets/images/julia.jpg',
-  'assets/images/punch_and_judy.jpg',
-  'assets/images/spike.jpg',
-  'assets/images/vicious.jpg',
+  '/assets/images/annie.jpg',
+  '/assets/images/edward.jpg',
+  '/assets/images/ein.jpg',
+  '/assets/images/faye.jpg',
+  '/assets/images/jet.jpg',
+  '/assets/images/julia.jpg',
+  '/assets/images/punch_and_judy.jpg',
+  '/assets/images/spike.jpg',
+  '/assets/images/vicious.jpg',
 ];
 let duplicatedImageArray = [];
 let shuffledDuplicatedImageArray = [];
@@ -17,6 +17,7 @@ let shuffledDuplicatedImageArray = [];
 function initiateApp() {
   duplicatedImageArray = duplicateArray(imageArray);
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);
+  createMultipleCardElements();
 }
 
 function duplicateArray(someArray) {
@@ -33,6 +34,13 @@ function shuffleArray(someArray) {
   return someArray;
 }
 
-function generateSingleCardElements() {
-  
+function generateSingleCardElements(imageURL) {
+  let cardDivs = $("<div class='card'>")
+    .append("<div class='cardFace'>")
+    .append("<div class='cardBack' style='background-image: url(`" + imageURL + "`)'>");
+  $(".cardsContainer").append(cardDivs);
+}
+
+function createMultipleCardElements() {
+  shuffledDuplicatedImageArray.map(imageURL => generateSingleCardElements(imageURL))
 }
