@@ -1,15 +1,14 @@
 $(document).ready(initiateApp);
 
 const imageArray = [
-  '/assets/images/annie.jpg',
-  '/assets/images/edward.jpg',
-  '/assets/images/ein.jpg',
-  '/assets/images/faye.jpg',
-  '/assets/images/jet.jpg',
-  '/assets/images/julia.jpg',
-  '/assets/images/punch_and_judy.jpg',
-  '/assets/images/spike.jpg',
-  '/assets/images/vicious.jpg',
+  'assets/images/edward.jpg',
+  'assets/images/ein.jpg',
+  'assets/images/faye.jpg',
+  'assets/images/jet.jpg',
+  'assets/images/julia.jpg',
+  'assets/images/punch_and_judy.jpg',
+  'assets/images/spike.jpg',
+  'assets/images/vicious.jpg',
 ];
 let duplicatedImageArray = [];
 let shuffledDuplicatedImageArray = [];
@@ -36,8 +35,8 @@ function shuffleArray(someArray) {
 
 function generateSingleCardElements(imageURL) {
   let cardDivs = $("<div class='card'>")
-    .append("<div class='cardFace'>")
-    .append("<div class='cardBack' style='background-image: url(`" + imageURL + "`)'>");
+    .append("<div class='image cardFace'>")
+    .append("<div class='image cardBack' style='background-image: url(" + imageURL + ")'>");
   $(".cardsContainer").append(cardDivs);
 }
 
