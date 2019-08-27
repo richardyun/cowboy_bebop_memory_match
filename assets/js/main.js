@@ -71,9 +71,11 @@ function handleCardClick(event) {
         secondCardClickedImageURL = null;
       }, 1500);
     } else {
-      twoCardsClicked = false;
-      firstCardClicked = null;
-      secondCardClicked = null;
+      setTimeout(function() {
+        twoCardsClicked = false;
+        firstCardClicked = null;
+        secondCardClicked = null;        
+      }, 1500);
     }
   }
 }
