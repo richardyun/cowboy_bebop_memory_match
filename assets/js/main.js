@@ -11,6 +11,11 @@ const imageArray = [
   'assets/images/vicious.jpg',
 ];
 let shuffledDuplicatedImageArray = [];
+let firstCardClicked = null;
+let secondCardClicked = null;
+let firstCardClickedImageURL = null;
+let secondCardClickedImageURL = null;
+let twoCardsClicked = false;
 
 function initiateApp() {
   const duplicatedImageArray = duplicateArray(imageArray);
@@ -45,13 +50,30 @@ function createMultipleCardElements() {
 }
 
 function handleCardClick(event) {
-  let firstCardClicked = null;
-  let secondCardClicked = null;
-  if (!firstCardClicked) {
+  if (twoCardsClicked) {
+    return;
+  }
+  if (firstCardClicked === null) {
     firstCardClicked = $(event.currentTarget).addClass("hidden");
-    console.log(event.currentTarget);
+    firstCardClickedImageURL = firstCardClicked.next().css("background-image");
   } else {
     secondCardClicked = $(event.currentTarget).addClass("hidden");
-    console.log(event.currentTarget);
+    secondCardClickedImageURL = secondCardClicked.next().css("background-image");
+    twoCardsClicked = true;
+    if (firstCardClickedImageURL !== secondCardClickedImageURL) {
+      setTimeout(function() {
+        twoCardsClicked = false;
+        firstCardClicked.removeClass("hidden");
+        secondCardClicked.removeClass("hidden");
+        firstCardClicked = null;
+        secondCardClicked = null;
+        firstCardClickedImageURL = null;
+        secondCardClickedImageURL = null;
+      }, 1500);
+    } else {
+      twoCardsClicked = false;
+      firstCardClicked = null;
+      secondCardClicked = null;
+    }
   }
 }
