@@ -79,3 +79,11 @@ function handleCardClick(event) {
     }
   }
 }
+
+function showModal() {
+  $(".winModal").addClass("showModal");
+}
+
+function closeModal() {
+  $(".winModal").removeClass("showModal");
+}
