@@ -16,6 +16,8 @@ let secondCardClicked = null;
 let firstCardClickedImageURL = null;
 let secondCardClickedImageURL = null;
 let twoCardsClicked = false;
+let cardMatches = null;
+const maxCardMatches = imageArray.length;
 
 function initiateApp() {
   const duplicatedImageArray = duplicateArray(imageArray);
@@ -71,11 +73,20 @@ function handleCardClick(event) {
         secondCardClickedImageURL = null;
       }, 1500);
     } else {
-      setTimeout(function() {
-        twoCardsClicked = false;
-        firstCardClicked = null;
-        secondCardClicked = null;        
-      }, 1500);
+      twoCardsClicked = false;
+      cardMatches++
+        if (cardMatches === maxCardMatches) {
+          showModal();
+          $(document).click(function(event) {
+            if ($(event.target).is(".winModal")) {
+              closeModal();
+              cardMatches = null;
+              $(".image").removeClass("hidden");
+            }
+          });
+        }
+      firstCardClicked = null;
+      secondCardClicked = null;
     }
   }
 }
