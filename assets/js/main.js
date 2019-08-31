@@ -17,6 +17,9 @@ let firstCardClickedImageURL = null;
 let secondCardClickedImageURL = null;
 let twoCardsClicked = false;
 let cardMatches = null;
+let matchAttempts = null;
+let gamesPlayed = null;
+let accuracy = null;
 const maxCardMatches = imageArray.length;
 
 function initiateApp() {
@@ -42,7 +45,7 @@ function shuffleArray(someArray) {
 
 function generateSingleCardElements(imageURL) {
   const cardDivs = $("<div class='card'>")
-    .append("<div class='image cardFace'>")
+    .append("<div class='image cardFace' style='background-image: url(assets/images/cowboy_bebop_title.jpg)'>")
     .append("<div class='image cardBack' style='background-image: url(" + imageURL + ")'>");
   $(".cardsContainer").append(cardDivs);
 }
@@ -63,6 +66,7 @@ function handleCardClick(event) {
     secondCardClickedImageURL = secondCardClicked.next().css("background-image");
     twoCardsClicked = true;
     if (firstCardClickedImageURL !== secondCardClickedImageURL) {
+      matchAttempts++;
       setTimeout(function() {
         twoCardsClicked = false;
         firstCardClicked.removeClass("hidden");
@@ -74,13 +78,15 @@ function handleCardClick(event) {
       }, 1500);
     } else {
       twoCardsClicked = false;
-      cardMatches++
+      matchAttempts++;
+      cardMatches++;
         if (cardMatches === maxCardMatches) {
+          gamesPlayed++;
           showModal();
+          $(".resetGame").click(resetGame);
           $(document).click(function(event) {
             if ($(event.target).is(".winModal")) {
               closeModal();
-              cardMatches = null;
               $(".image").removeClass("hidden");
             }
           });
@@ -89,6 +95,37 @@ function handleCardClick(event) {
       secondCardClicked = null;
     }
   }
+  displayStats();
+}
+
+function displayStats() {
+  accuracy = calculateAccuracy();
+  if (gamesPlayed) {
+    $("#gameCountNumber").text(gamesPlayed);
+  }
+  if (matchAttempts) {
+    $("#matchAttemptsNumber").text(matchAttempts); 
+  } else {
+    $("#matchAttemptsNumber").text("0");
+  }
+  if (!isNaN(accuracy)) {
+    $("#matchAccuracyNumber").text( accuracy + "%" );
+  } else {
+    $("#matchAccuracyNumber").text("0%");
+  }
+}
+
+function resetStats() {
+  cardMatches = null;
+  matchAttempts = null;
+  accuracy = null;
+  closeModal();
+  displayStats();
+  $(".image").removeClass("hidden");
+}
+
+function calculateAccuracy(){
+  return Math.round( (cardMatches / matchAttempts) * 100 );
 }
 
 function showModal() {
@@ -97,4 +134,10 @@ function showModal() {
 
 function closeModal() {
   $(".winModal").removeClass("showModal");
+}
+
+function resetGame() {
+  resetStats();
+  $(".cardsContainer").empty();
+  initiateApp();
 }
