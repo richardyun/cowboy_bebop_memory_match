@@ -12,6 +12,12 @@ header {
   height: 12vh;
   margin-bottom: 1vmin;
   box-sizing: border-box;
+  vertical-align: center;
+  text-align: center;
+  line-height: 13vh;
+  font-size: 10vmin;
+  font-weight: bold;
+  opacity: 0.7;
 }
 .asideOne {
   margin-left: 1vmin;
@@ -19,10 +25,32 @@ header {
 .asideOne, .asideTwo {
   width: 20%;
   height: 85vh;
-  background-color: green;
+  background-color: white;
   border: 1px solid black;
   display: inline-block;
   box-sizing: border-box;
+}
+.statsContent {
+  height: 10vh;
+  line-height: 10vh;
+  font-size: 4vh;
+  width: 85%;
+  margin: 1vmin auto;
+  background-color: aquamarine;
+  opacity: 0.7;
+}
+#statsTitle {
+  background-color: whitesmoke;
+  height: 6vh;
+  width: 85%;
+  line-height: 6vh;
+  font-size: 6vh;
+  font-weight: bold;
+  margin-top: 2vh;
+  margin-bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0.7;
 }
 main {
   width: 57%;
@@ -84,6 +112,22 @@ main {
   width: 24rem;
   border-radius: 0.5rem;
   text-align: center;
+}
+.resetGame {
+  border-radius: 4px;
+  background-color: whitesmoke;
+  border: 3px solid black;
+  color: black;
+  text-align: center;
+  font-size: 4vh;
+  padding: 20px;
+  width: 60%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.resetGame:hover {
+  background-color: red;
 }
 .showModal {
   opacity: 1;
