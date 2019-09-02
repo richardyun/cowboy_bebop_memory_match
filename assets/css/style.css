@@ -22,6 +22,7 @@ body {
   text-align: center;
   background-color: aquamarine;
   opacity: 0.7;
+  margin: 1vmin auto;
 }
 main {
   background-color: palevioletred;
@@ -54,7 +55,21 @@ main {
   box-sizing: border-box;
 }
 .cardFace {
-  background-color: rgb(0, 0, 0);
+  /* background-color: rgb(0, 0, 0); */
+  z-index: 2;
+  border: none;
+  animation: rotation 4s infinite linear;
+}  
+@keyframes rotation {
+  50% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.cardFaceBackground {
+  background-color: black;
   z-index: 1;
 }
 .hidden {
@@ -121,10 +136,9 @@ main {
   }
   .statsContent, .difficultyContent, .musicContent {
     height: 10vmin;
+    width: 90%;
     line-height: 10vmin;
     font-size: 5vmin;
-    width: 90%;
-    margin: 1vmin auto;
   }
   .bannerContent {
     width: 100%;
@@ -149,8 +163,23 @@ main {
     flex-direction: column;
   }
   .asideOne, .asideTwo {
+    flex-direction: row;
     width: 99vw;
-    height: 20%;
+    height: 21%;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 10vmin;
+    width: 90%;
+    line-height: 10vmin;
+    font-size: 5vmin;
+  }
+  .bannerContent {
+    height: 100%;
+    width: 55vmin;
+    background-image: url('../images/cowboy_bebop_art_landscape.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   main {
     width: 99vw;
