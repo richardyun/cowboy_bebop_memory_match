@@ -4,60 +4,31 @@ body {
   border: 1px solid black;
   margin: 0;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   /* overflow: hidden; */
 }
-header {
-  background-color: lightblue;
-  border: 1px solid black;
-  height: 12vh;
-  margin-bottom: 1vmin;
-  box-sizing: border-box;
-  vertical-align: center;
-  text-align: center;
-  line-height: 13vh;
-  font-size: 10vmin;
-  font-weight: bold;
-  opacity: 0.7;
-}
-.asideOne {
-  margin-left: 1vmin;
-}
-.asideOne, .asideTwo {
-  width: 20%;
-  height: 85vh;
+.asideOne, .asideTwo, .asideOneItems, .asideTwoItems {
   background-color: white;
   border: 1px solid black;
-  display: inline-block;
   box-sizing: border-box;
 }
-.statsContent {
-  height: 10vh;
-  line-height: 10vh;
-  font-size: 4vh;
-  width: 85%;
-  margin: 1vmin auto;
+.asideOne, .asideTwo {
+  display: flex;
+  justify-content: space-evenly;
+}
+.statsContent, .difficultyContent, .musicContent {
+  /* line-height: 10vh;
+  font-size: 4vh; */
+  text-align: center;
+  /* margin: 1vmin auto; */
   background-color: aquamarine;
   opacity: 0.7;
 }
-#statsTitle {
-  background-color: whitesmoke;
-  height: 6vh;
-  width: 85%;
-  line-height: 6vh;
-  font-size: 6vh;
-  font-weight: bold;
-  margin-top: 2vh;
-  margin-bottom: 0;
-  margin-right: auto;
-  margin-left: auto;
-  opacity: 0.7;
-}
 main {
-  width: 57%;
-  height: 85vh;
   background-color: palevioletred;
   border: 1px solid black;
-  display: inline-block;
   box-sizing: border-box;
 }
 .cardsContainer {
@@ -134,4 +105,53 @@ main {
   visibility: visible;
   transform: scale(1.0);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+  body {
+    flex-direction: row;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: column;
+    width: 21%;
+    height: 99vh;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 10vmin;
+    line-height: 10vmin;
+    font-size: 5vmin;
+    width: 90%;
+    margin: 1vmin auto;
+    flex-grow: 1;
+  }
+  .bannerContent {
+    flex-grow: 2;
+  }
+  main {
+    width: 99vh;
+    height: 99vh;
+  }
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+  body {
+    flex-direction: column;
+  }
+  .asideOne, .asideTwo {
+    width: 99vw;
+    height: 20%;
+  }
+  main {
+    width: 99vw;
+    height: 99vw;
+  }
 }
