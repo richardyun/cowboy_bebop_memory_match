@@ -46,6 +46,7 @@ function shuffleArray(someArray) {
 function generateSingleCardElements(imageURL) {
   const cardDivs = $("<div class='card'>")
     .append("<div class='image cardFace' style='background-image: url(assets/images/smiley_edit.png)'>")
+    .append("<div class='image cardFaceBackground'>")
     .append("<div class='image cardBack' style='background-image: url(" + imageURL + ")'>");
   $(".cardsContainer").append(cardDivs);
 }
@@ -60,17 +61,21 @@ function handleCardClick(event) {
   }
   if (firstCardClicked === null) {
     firstCardClicked = $(event.currentTarget).addClass("hidden");
-    firstCardClickedImageURL = firstCardClicked.next().css("background-image");
+    firstCardClicked.next().addClass("hidden");
+    firstCardClickedImageURL = firstCardClicked.next().next().css("background-image");
   } else {
     secondCardClicked = $(event.currentTarget).addClass("hidden");
-    secondCardClickedImageURL = secondCardClicked.next().css("background-image");
+    secondCardClicked.next().addClass("hidden");
+    secondCardClickedImageURL = secondCardClicked.next().next().css("background-image");
     twoCardsClicked = true;
     if (firstCardClickedImageURL !== secondCardClickedImageURL) {
       matchAttempts++;
       setTimeout(function() {
         twoCardsClicked = false;
         firstCardClicked.removeClass("hidden");
+        firstCardClicked.next().removeClass("hidden");
         secondCardClicked.removeClass("hidden");
+        secondCardClicked.next().removeClass("hidden");
         firstCardClicked = null;
         secondCardClicked = null;
         firstCardClickedImageURL = null;
