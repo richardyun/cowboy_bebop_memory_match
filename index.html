@@ -7,33 +7,67 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="assets/js/main.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
-  <title>Memory Match - 2019 Portfolio Ver.</title>
+  <title>Cowboy Bebop Memory Match</title>
 </head>
 <body>
-  <header>COWBOY BEBOP CHARACTER MATCH</header>
-  <aside class="asideOne"></aside>
+  <aside class="asideOne">
+    <div class="asideOneItems">
+      <div class="bannerContent">
+        <div class="gameBanner"></div>
+      </div>
+    </div>
+    <div class="asideOneItems">
+      <div class="difficultyContent">
+        <div class="difficultyLevel">Difficulty</div>
+      </div>
+      <div class="difficultyContent">
+        <div class="difficultyLevel" id="difficultyDegree">Easy</div>
+      </div>
+    </div>
+    <div class="asideOneItems">
+      <div class="musicContent">
+        <div class="musicPlayer" id="gameMusic">Music</div>
+      </div>
+      <div class="musicContent">
+        <div class="musicPlayer" id="musicPlayerButtons">Stop Play</div>
+      </div>
+    </div>
+  </aside>
   <main>
     <div class="cardsContainer"></div>
   </main>
   <aside class="asideTwo">
-    <div id="statsTitle">Stats</div>
-    <div class="statsContent">
-      <div class="statsText" id="gameCount">Games Played</div>
+    <div class="asideTwoItems">
+      <div class="statsContent">
+        <div class="statsText" id="gameCount">Games Played</div>
+      </div>
+      <div class="statsContent">
+        <div class="statsText" id="gameCountNumber">0</div>
+      </div>
     </div>
-    <div class="statsContent">
-      <div class="statsText" id="gameCountNumber">0</div>
+    <div class="asideTwoItems">
+      <div class="statsContent">
+        <div class="statsText" id="matchAttempts">Attempts</div>
+      </div>
+      <div class="statsContent">
+        <div class="statsText" id="matchAttemptsNumber">0</div>
+      </div>
     </div>
-    <div class="statsContent">
-      <div class="statsText" id="matchAttempts">Attempts</div>
+    <div class="asideTwoItems">
+      <div class="statsContent">
+        <div class="statsText" id="matchAccuracy">Accuracy</div>
+      </div>
+      <div class="statsContent">
+        <div class="statsText" id="matchAccuracyNumber">0%</div>
+      </div>      
     </div>
-    <div class="statsContent">
-      <div class="statsText" id="matchAttemptsNumber">0</div>
-    </div>
-    <div class="statsContent">
-      <div class="statsText" id="matchAccuracy">Accuracy</div>
-    </div>
-    <div class="statsContent">
-      <div class="statsText" id="matchAccuracyNumber">0%</div>
+    <div class="asideTwoItems">
+      <div class="statsContent">
+        <div class="statsText" id="countdown">Countdown</div>
+      </div>
+      <div class="statsContent">
+        <div class="statsText" id="countdownNumber">00:00</div>
+      </div>      
     </div>
   </aside>
   <div class="winModal">
