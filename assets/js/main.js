@@ -45,7 +45,7 @@ function shuffleArray(someArray) {
 
 function generateSingleCardElements(imageURL) {
   const cardDivs = $("<div class='card'>")
-    .append("<div class='image cardFace' style='background-image: url(assets/images/cowboy_bebop_title.jpg)'>")
+    .append("<div class='image cardFace' style='background-image: url(assets/images/smiley_edit.png)'>")
     .append("<div class='image cardBack' style='background-image: url(" + imageURL + ")'>");
   $(".cardsContainer").append(cardDivs);
 }
