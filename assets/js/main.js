@@ -26,7 +26,7 @@ function initiateApp() {
   const duplicatedImageArray = duplicateArray(imageArray);
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);
   createMultipleCardElements();
-  $(".card").on("click", ".cardFace", handleCardClick);
+  $(".scene").on("click", ".card", handleCardClick);
 }
 
 function duplicateArray(someArray) {
@@ -44,11 +44,13 @@ function shuffleArray(someArray) {
 }
 
 function generateSingleCardElements(imageURL) {
+  
   const cardDivs = $("<div class='card'>")
     .append("<div class='image cardFace' style='background-image: url(assets/images/smiley_edit.png)'>")
     .append("<div class='image cardFaceBackground'>")
     .append("<div class='image cardBack' style='background-image: url(" + imageURL + ")'>");
-  $(".cardsContainer").append(cardDivs);
+  const animationScene = $("<div class='scene'>").append(cardDivs);
+  $(".cardsContainer").append(animationScene);
 }
 
 function createMultipleCardElements() {
@@ -56,26 +58,22 @@ function createMultipleCardElements() {
 }
 
 function handleCardClick(event) {
-  if (twoCardsClicked) {
+  if ($(event.currentTarget).hasClass("isFlipped") || twoCardsClicked) {
     return;
   }
   if (firstCardClicked === null) {
-    firstCardClicked = $(event.currentTarget).addClass("hidden");
-    firstCardClicked.next().addClass("hidden");
-    firstCardClickedImageURL = firstCardClicked.next().next().css("background-image");
+    firstCardClicked = $(event.currentTarget).addClass("isFlipped");
+    firstCardClickedImageURL = event.currentTarget.children[2].style.backgroundImage;
   } else {
-    secondCardClicked = $(event.currentTarget).addClass("hidden");
-    secondCardClicked.next().addClass("hidden");
-    secondCardClickedImageURL = secondCardClicked.next().next().css("background-image");
+    secondCardClicked = $(event.currentTarget).addClass("isFlipped");
+    secondCardClickedImageURL = event.currentTarget.children[2].style.backgroundImage;
     twoCardsClicked = true;
     if (firstCardClickedImageURL !== secondCardClickedImageURL) {
       matchAttempts++;
       setTimeout(function() {
         twoCardsClicked = false;
-        firstCardClicked.removeClass("hidden");
-        firstCardClicked.next().removeClass("hidden");
-        secondCardClicked.removeClass("hidden");
-        secondCardClicked.next().removeClass("hidden");
+        firstCardClicked.removeClass("isFlipped");
+        secondCardClicked.removeClass("isFlipped");
         firstCardClicked = null;
         secondCardClicked = null;
         firstCardClickedImageURL = null;
@@ -92,7 +90,7 @@ function handleCardClick(event) {
           $(document).click(function(event) {
             if ($(event.target).is(".winModal")) {
               closeModal();
-              $(".image").removeClass("hidden");
+              $(".image").removeClass("isFlipped");
             }
           });
         }
@@ -126,7 +124,7 @@ function resetStats() {
   accuracy = null;
   closeModal();
   displayStats();
-  $(".image").removeClass("hidden");
+  $(".image").removeClass("isFlipped");
 }
 
 function calculateAccuracy(){

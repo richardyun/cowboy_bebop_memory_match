@@ -64,10 +64,25 @@ main {
   display: flex;
   flex-wrap: wrap;
 }
-.card {
+.scene {
+  height: 25%;
+  width: 25%;
+  perspective: 600px;
+}
+/* .card {
   height: 25%;
   width: 25%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+} */
+.card {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -81,6 +96,7 @@ main {
   border: 1px solid black;
   position: absolute;
   box-sizing: border-box;
+  backface-visibility: hidden;
 }
 .cardFace {
   z-index: 2;
@@ -98,6 +114,12 @@ main {
 .cardFaceBackground {
   background-color: black;
   z-index: 1;
+}
+.cardBack {
+  transform: rotateY(180deg);
+}
+.card.isFlipped {
+  transform: rotateY(180deg);
 }
 .hidden {
   display: none;
