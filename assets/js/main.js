@@ -85,7 +85,9 @@ function handleCardClick(event) {
       cardMatches++;
         if (cardMatches === maxCardMatches) {
           gamesPlayed++;
-          showModal();
+          setTimeout(function() {
+            showModal();
+          }, 500);
           $(".resetGame").click(resetGame);
           $(document).click(function(event) {
             if ($(event.target).is(".winModal")) {
