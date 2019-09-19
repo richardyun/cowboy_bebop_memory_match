@@ -176,7 +176,7 @@ main {
   }
   .asideOne, .asideTwo {
     flex-direction: column;
-    width: 15%;
+    width: 12%;
     height: 99vh;
   }
   .asideOneItems, .asideTwoItems {
@@ -188,7 +188,7 @@ main {
     height: 10vmin;
     width: 90%;
     line-height: 10vmin;
-    font-size: 6vmin;
+    font-size: 5vmin;
   }
   #bannerContainer {
     width: 100%;
@@ -265,7 +265,7 @@ main {
   }
   .asideOne, .asideTwo {
     flex-direction: column;
-    width: 21%;
+    width: 25%;
     height: 99vh;
   }
   .asideOneItems, .asideTwoItems {
