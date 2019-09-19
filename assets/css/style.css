@@ -44,7 +44,7 @@ body {
 #bannerContainer {
   width: 100%;
   height: 50vmin;
-  background-image: url('../images/cowboy_bebop_art_portrait.jpg');
+  /* background-image: url('../images/cowboy_bebop_art_portrait.jpg'); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -193,7 +193,7 @@ main {
   #bannerContainer {
     width: 100%;
     height: 50vmin;
-    background-image: url('../images/cowboy_bebop_art_portrait.jpg');
+    /* background-image: url('../images/cowboy_bebop_art_portrait.jpg'); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -225,16 +225,23 @@ main {
     height: 100%;
     width: 22vmin;
   }
+  .asideTwoItems {
+    width: 24vmin;
+  }
   .statsContent, .difficultyContent, .musicContent {
     height: 8vmin;
     width: 90%;
-    line-height: 8vmin;
-    font-size: 5vmin;
+    /* line-height: 8vmin; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 6vmin;
   }
   #bannerContainer {
     height: 100%;
     width: 55vmin;
-    background-image: url('../images/cowboy_bebop_art_landscape.jpg');
+    /* background-image: url('../images/cowboy_bebop_art_landscape.jpg'); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -275,7 +282,7 @@ main {
   #bannerContainer {
     width: 100%;
     height: 50vmin;
-    background-image: url('../images/cowboy_bebop_art_portrait.jpg');
+    /* background-image: url('../images/cowboy_bebop_art_portrait.jpg'); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -285,6 +292,10 @@ main {
     height: 99vh;
   }
 }
+
+
+
+
 
 
 
@@ -316,7 +327,7 @@ main {
   #bannerContainer {
     width: 100%;
     height: 50vmin;
-    background-image: url('../images/cowboy_bebop_art_portrait.jpg');
+    /* background-image: url('../images/cowboy_bebop_art_portrait.jpg'); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -340,24 +351,86 @@ main {
   }
   .asideOne, .asideTwo {
     flex-direction: row;
+    flex-wrap: wrap;
     width: 99vw;
     height: 21%;
   }
   .asideOneItems, .asideTwoItems {
-    flex-direction: column;
-    height: 100%;
-    width: 22vmin;
+    flex-direction: row;
+    height: 49%;
+    width: 50%;
   }
   .statsContent, .difficultyContent, .musicContent {
-    height: 10vmin;
-    width: 90%;
-    line-height: 10vmin;
-    font-size: 5vmin;
+    height: 90%;
+    width: 49%;
+    line-height: 17vmin;
+    font-size: 8vmin;
+  }
+  .statsText, .statsTextTitle {
+    height: 100%;
   }
   #bannerContainer {
+    height: 50%;
+    width: 100%;
+    /* background-image: url('../images/cowboy_bebop_art_landscape.jpg'); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vw;
+    height: 99vw;
+  }
+}
+
+
+
+/* iPhone X - PORTRAIT */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+  body {
+    flex-direction: column;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 99vw;
+    /* height: 21%; */
+  }
+  .asideOne {
+    height: 33%;
+  }
+  .asideTwo {
+    height: 19%;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: row;
+    height: 49%;
+    width: 50%;
+  }
+  .asideOneItems {
+    height: 35%;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 90%;
+    width: 49%;
+    /* line-height: 17vmin; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 8vmin;
+  }
+  .statsText, .statsTextTitle {
     height: 100%;
-    width: 55vmin;
-    background-image: url('../images/cowboy_bebop_art_landscape.jpg');
+  }
+  #bannerContainer {
+    height: 65%;
+    width: 100%;
+    /* background-image: url('../images/cowboy_bebop_art_landscape.jpg'); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
