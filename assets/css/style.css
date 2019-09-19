@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .asideOne, .asideTwo, .asideOneItems, .asideTwoItems {
   background-color: white;
@@ -20,7 +20,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  width: 17%;
+  width: 25%;
   height: 99vh;
 }
 .asideOneItems, .asideTwoItems {
@@ -204,8 +204,6 @@ main {
   }
 }
 
-
-
 /* iPad - PORTRAIT - 3/4/Pro-9.7" */
 @media only screen 
   and (min-device-width: 768px) 
@@ -295,10 +293,6 @@ main {
 
 
 
-
-
-
-
 /* iPhone 6/7/8 - LANDSCAPE */
 @media only screen 
   and (min-device-width: 375px) 
@@ -337,8 +331,6 @@ main {
     height: 99vh;
   }
 }
-
-
 
 /* iPhone 6/7/8 - PORTRAIT */
 @media only screen 
