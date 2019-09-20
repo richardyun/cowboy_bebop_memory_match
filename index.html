@@ -61,10 +61,12 @@
     </div>
     <div class="asideTwoItems">
       <div class="statsContent">
-        <div class="statsTextTitle">Timer</div>
+        <div class="statsTextTitle" id="extraSectionTitle">Help</div>
       </div>
       <div class="statsContent">
-        <div class="statsText" id="extraSectionContainer">00:00</div>
+        <div class="statsText" id="extraSectionContainer">
+          <button class="gameInstructions">Instructions</button>
+        </div>
       </div>      
     </div>
   </aside>
@@ -72,7 +74,11 @@
     <div class="modalContent">
       <h1>Congratulations!</h1>
       <h1>You've won!</h1>
-      <button class="resetGame">New Game</button>
+      <div class="gameLevelButtonContainer">
+        <button class="resetGame levelEasy">Easy</button>
+        <button class="resetGame levelMedium">Medium</button>
+        <button class="resetGame levelHard">Hard</button>
+      </div>
     </div>
   </div>
 </body>
