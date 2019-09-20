@@ -1,14 +1,36 @@
 $(document).ready(initiateApp);
 
-const imageArray = [
-  'assets/images/edward.jpg',
-  'assets/images/ein.jpg',
-  'assets/images/faye.jpg',
-  'assets/images/jet.jpg',
-  'assets/images/julia.jpg',
-  'assets/images/punch_and_judy.jpg',
-  'assets/images/spike.jpg',
-  'assets/images/vicious.jpg',
+const imageArrays = [
+  [
+    'assets/images/edward.jpg',
+    'assets/images/ein.jpg',
+    'assets/images/faye.jpg',
+    'assets/images/jet.jpg',
+    'assets/images/julia.jpg',
+    'assets/images/punch_and_judy.jpg',
+    'assets/images/spike.jpg',
+    'assets/images/vicious.jpg',
+  ],
+  [
+    'assets/images/edward.jpg',
+    'assets/images/ein.jpg',
+    'assets/images/faye.jpg',
+    'assets/images/jet.jpg',
+    'assets/images/julia.jpg',
+    'assets/images/punch_and_judy.jpg',
+    'assets/images/spike.jpg',
+    'assets/images/vicious.jpg',
+  ],
+  [
+    'assets/images/edward.jpg',
+    'assets/images/ein.jpg',
+    'assets/images/faye.jpg',
+    'assets/images/jet.jpg',
+    'assets/images/julia.jpg',
+    'assets/images/punch_and_judy.jpg',
+    'assets/images/spike.jpg',
+    'assets/images/vicious.jpg',
+  ]
 ];
 let shuffledDuplicatedImageArray = [];
 let firstCardClicked = null;
@@ -20,17 +42,30 @@ let cardMatches = null;
 let matchAttempts = null;
 let gamesPlayed = null;
 let accuracy = null;
-const maxCardMatches = imageArray.length;
+let difficultyLevel = ['Easy', 'Medium', 'Hard'];
+let currentDifficulty = 0;
+let highestDifficultyCompleted = 0;
+const maxCardMatches = imageArrays[currentDifficulty].length;
 
 function initiateApp() {
-  const duplicatedImageArray = duplicateArray(imageArray);
+  $("#difficultyDegree").text(difficultyLevel[currentDifficulty]);
+  if (currentDifficulty > 0) {
+    $("#extraSectionTitle").text("Timer");
+    $(".gameInstructions").addClass("hidden");
+  } else {
+    $("#extraSectionTitle").text("Help");
+    $(".gameInstructions").removeClass("hidden");
+  }
+  const duplicatedImageArray = duplicateArray(imageArrays[currentDifficulty]);
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);
   createMultipleCardElements();
   $(".scene").on("click", ".card", handleCardClick);
+  console.log("currentDifficulty",currentDifficulty);
+  console.log("highestDifficultyCompleted", highestDifficultyCompleted);
 }
 
 function duplicateArray(someArray) {
-  return someArray.reduce(function(res, current, index, array) {
+  return someArray.reduce(function(res, current) {
     return res.concat([current, current]);
   }, []);
 }
@@ -44,7 +79,6 @@ function shuffleArray(someArray) {
 }
 
 function generateSingleCardElements(imageURL) {
-  
   const cardDivs = $("<div class='card'>")
     .append("<div class='image cardFace' style='background-image: url(assets/images/smiley_edit.png)'>")
     .append("<div class='image cardFaceBackground'>")
@@ -85,14 +119,30 @@ function handleCardClick(event) {
       cardMatches++;
         if (cardMatches === maxCardMatches) {
           gamesPlayed++;
+          if (currentDifficulty > highestDifficultyCompleted) {
+            highestDifficultyCompleted = currentDifficulty;
+          }
           setTimeout(function() {
             showModal();
           }, 500);
-          $(".resetGame").click(resetGame);
+          $(".resetGame").click(function(event){
+            if ($(event.target).is(".levelEasy")) {
+              currentDifficulty = 0;
+              resetGame();
+            }
+            if ($(event.target).is(".levelMedium")) {
+              currentDifficulty = 1;
+              resetGame();
+            }
+            if ($(event.target).is(".levelHard")) {
+              currentDifficulty = 2;
+              resetGame();
+            }
+          });
           $(document).click(function(event) {
             if ($(event.target).is(".winModal")) {
               closeModal();
-              $(".image").removeClass("isFlipped");
+              resetGame();
             }
           });
         }
