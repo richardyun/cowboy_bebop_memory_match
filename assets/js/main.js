@@ -60,6 +60,15 @@ function initiateApp() {
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);
   createMultipleCardElements();
   $(".scene").on("click", ".card", handleCardClick);
+  $(".gameInstructions").click(function() {
+    $(".instructionModal").addClass("showModal");
+  })
+  $(".closeInstructionModal").click(closeModal);
+  $(document).click(function(event) {
+    if ($(event.target).is(".modal")) {
+      closeModal();
+    }
+  });
   console.log("currentDifficulty",currentDifficulty);
   console.log("highestDifficultyCompleted", highestDifficultyCompleted);
 }
@@ -123,7 +132,7 @@ function handleCardClick(event) {
             highestDifficultyCompleted = currentDifficulty;
           }
           setTimeout(function() {
-            showModal();
+            $(".winModal").addClass("showModal");
           }, 500);
           $(".resetGame").click(function(event){
             if ($(event.target).is(".levelEasy")) {
@@ -184,11 +193,11 @@ function calculateAccuracy(){
 }
 
 function showModal() {
-  $(".winModal").addClass("showModal");
+  $(".modal").addClass("showModal");
 }
 
 function closeModal() {
-  $(".winModal").removeClass("showModal");
+  $(".modal").removeClass("showModal");
 }
 
 function resetGame() {

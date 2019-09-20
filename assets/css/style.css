@@ -49,7 +49,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.statsTextTitle, .statsText, .difficultyLevel, .musicPlayer {
+.statsTextTitle, .statsText, .difficultyLevel, .musicPlayer, h1, h3 {
   font-family: "Cute Font", cursive;
 }
 main {
@@ -118,7 +118,7 @@ main {
 .hidden {
   display: none;
 }
-.winModal {
+.modal {
   position: fixed;
   left: 0;
   top: 0;
