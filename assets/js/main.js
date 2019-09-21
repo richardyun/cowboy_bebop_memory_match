@@ -48,6 +48,9 @@ let highestDifficultyCompleted = 0;
 const maxCardMatches = imageArrays[currentDifficulty].length;
 
 function initiateApp() {
+  if (currentDifficulty > highestDifficultyCompleted) {
+    highestDifficultyCompleted = currentDifficulty;
+  }
   $("#difficultyDegree").text(difficultyLevel[currentDifficulty]);
   if (currentDifficulty > 0) {
     $("#extraSectionTitle").text("Timer");
@@ -55,6 +58,11 @@ function initiateApp() {
   } else {
     $("#extraSectionTitle").text("Help");
     $(".gameInstructions").removeClass("hidden");
+  }
+  if (highestDifficultyCompleted < 1) {
+    $(".levelHard").addClass("lockedLevel");
+  } else {
+    $(".levelHard").removeClass("lockedLevel");
   }
   const duplicatedImageArray = duplicateArray(imageArrays[currentDifficulty]);
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);
@@ -69,8 +77,9 @@ function initiateApp() {
       closeModal();
     }
   });
-  console.log("currentDifficulty",currentDifficulty);
-  console.log("highestDifficultyCompleted", highestDifficultyCompleted);
+  // debugger;
+  console.log("currentDifficulty:", currentDifficulty);
+  console.log("highestDifficultyCompleted:", highestDifficultyCompleted);
 }
 
 function duplicateArray(someArray) {
@@ -126,30 +135,33 @@ function handleCardClick(event) {
       twoCardsClicked = false;
       matchAttempts++;
       cardMatches++;
-        if (cardMatches === maxCardMatches) {
+        // if (cardMatches === maxCardMatches) {
+        if (cardMatches === 1) {
           gamesPlayed++;
-          if (currentDifficulty > highestDifficultyCompleted) {
-            highestDifficultyCompleted = currentDifficulty;
-          }
+          // if (currentDifficulty > highestDifficultyCompleted) {
+          //   highestDifficultyCompleted = currentDifficulty;
+          // }
           setTimeout(function() {
             $(".winModal").addClass("showModal");
           }, 500);
           $(".resetGame").click(function(event){
-            if ($(event.target).is(".levelEasy")) {
+            console.log("event.target", event.target);
+            // debugger;
+            if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
               resetGame();
             }
-            if ($(event.target).is(".levelMedium")) {
+            if ($(event.target).hasClass("levelMedium")) {
               currentDifficulty = 1;
               resetGame();
             }
-            if ($(event.target).is(".levelHard")) {
+            if ($(event.target).hasClass("levelHard") && !$(".levelHard").hasClass("lockedLevel")) {
               currentDifficulty = 2;
               resetGame();
             }
           });
           $(document).click(function(event) {
-            if ($(event.target).is(".winModal")) {
+            if ($(event.target).hasClass("winModal")) {
               closeModal();
               resetGame();
             }
