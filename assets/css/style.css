@@ -5,6 +5,7 @@ body {
   background-color: yellow;
   border: 1px solid black;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -153,6 +154,9 @@ p, .winMessage {
   font-size: 8vmin;
   margin: 0;
 }
+.lockedLevelText>p {
+  font-size: 15vmin;
+}
 .resetGame, .closeInstructionModal, .gameInstructions {
   border-radius: 4px;
   background-color: whitesmoke;
@@ -181,14 +185,19 @@ p, .winMessage {
   width: 60%;
   margin: 2vmin;
 }
-.resetGame:hover, .closeInstructionModal:hover, .gameInstructions:hover {
+/* .resetGame:hover, .closeInstructionModal:hover, .gameInstructions:hover {
   background-color: red;
-}
+} */
 .showModal {
   opacity: 1;
   visibility: visible;
   transform: scale(1.0);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.lockedLevel {
+  background-color: darkgray;
+  border: 0.5vmin solid gray;
+  color: gray;
 }
 
 

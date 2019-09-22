@@ -10,8 +10,7 @@ const imageArrays = [
     'assets/images/punch_and_judy.jpg',
     'assets/images/spike.jpg',
     'assets/images/vicious.jpg',
-  ],
-  [
+  ], [
     'assets/images/edward.jpg',
     'assets/images/ein.jpg',
     'assets/images/faye.jpg',
@@ -20,8 +19,7 @@ const imageArrays = [
     'assets/images/punch_and_judy.jpg',
     'assets/images/spike.jpg',
     'assets/images/vicious.jpg',
-  ],
-  [
+  ], [
     'assets/images/edward.jpg',
     'assets/images/ein.jpg',
     'assets/images/faye.jpg',
@@ -48,6 +46,9 @@ let highestDifficultyCompleted = 0;
 const maxCardMatches = imageArrays[currentDifficulty].length;
 
 function initiateApp() {
+  if (currentDifficulty > highestDifficultyCompleted) {
+    highestDifficultyCompleted = currentDifficulty;
+  }
   $("#difficultyDegree").text(difficultyLevel[currentDifficulty]);
   if (currentDifficulty > 0) {
     $("#extraSectionTitle").text("Timer");
@@ -55,6 +56,11 @@ function initiateApp() {
   } else {
     $("#extraSectionTitle").text("Help");
     $(".gameInstructions").removeClass("hidden");
+  }
+  if (highestDifficultyCompleted < 1) {
+    $(".levelHard").addClass("lockedLevel");
+  } else {
+    $(".levelHard").removeClass("lockedLevel");
   }
   const duplicatedImageArray = duplicateArray(imageArrays[currentDifficulty]);
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);
@@ -64,13 +70,14 @@ function initiateApp() {
     $(".instructionModal").addClass("showModal");
   })
   $(".closeInstructionModal").click(closeModal);
-  $(document).click(function(event) {
-    if ($(event.target).is(".modal")) {
-      closeModal();
-    }
-  });
-  console.log("currentDifficulty",currentDifficulty);
-  console.log("highestDifficultyCompleted", highestDifficultyCompleted);
+  // $(document).click(function(event) {
+  //   if ($(event.target).is(".modal")) {
+  //     closeModal();
+  //   }
+  // });
+  // debugger;
+  console.log("currentDifficulty:", currentDifficulty);
+  console.log("highestDifficultyCompleted:", highestDifficultyCompleted);
 }
 
 function duplicateArray(someArray) {
@@ -126,32 +133,43 @@ function handleCardClick(event) {
       twoCardsClicked = false;
       matchAttempts++;
       cardMatches++;
-        if (cardMatches === maxCardMatches) {
+        // if (cardMatches === maxCardMatches) {
+        if (cardMatches === 1) {
           gamesPlayed++;
-          if (currentDifficulty > highestDifficultyCompleted) {
-            highestDifficultyCompleted = currentDifficulty;
-          }
+          // if (currentDifficulty > highestDifficultyCompleted) {
+          //   highestDifficultyCompleted = currentDifficulty;
+          // }
           setTimeout(function() {
             $(".winModal").addClass("showModal");
           }, 500);
           $(".resetGame").click(function(event){
-            if ($(event.target).is(".levelEasy")) {
+            // debugger;
+            if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
               resetGame();
             }
-            if ($(event.target).is(".levelMedium")) {
+            if ($(event.target).hasClass("levelMedium")) {
               currentDifficulty = 1;
               resetGame();
             }
-            if ($(event.target).is(".levelHard")) {
+            if ($(event.target).hasClass("levelHard")) {
+              if ($(".levelHard").hasClass("lockedLevel")) {
+                $(".lockedLevelModal").addClass("showModal");
+                setTimeout(function() {
+                  $(".lockedLevelModal").removeClass("showModal");
+                }, 3500);
+              } else {
               currentDifficulty = 2;
               resetGame();
+              }
             }
           });
           $(document).click(function(event) {
-            if ($(event.target).is(".winModal")) {
-              closeModal();
-              resetGame();
+            if ($(event.target).hasClass("winModal") || $(event.target).hasClass("resetGame")) {
+              if (!$(".lockedLevelModal").hasClass("showModal")) {
+                closeModal();
+                resetGame();                
+              }
             }
           });
         }
@@ -183,7 +201,7 @@ function resetStats() {
   cardMatches = null;
   matchAttempts = null;
   accuracy = null;
-  closeModal();
+  // closeModal();
   displayStats();
   $(".image").removeClass("isFlipped");
 }
