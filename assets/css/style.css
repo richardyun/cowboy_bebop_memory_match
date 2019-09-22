@@ -154,6 +154,9 @@ p, .winMessage {
   font-size: 8vmin;
   margin: 0;
 }
+.lockedLevelText>p {
+  font-size: 15vmin;
+}
 .resetGame, .closeInstructionModal, .gameInstructions {
   border-radius: 4px;
   background-color: whitesmoke;
@@ -182,9 +185,9 @@ p, .winMessage {
   width: 60%;
   margin: 2vmin;
 }
-.resetGame:hover, .closeInstructionModal:hover, .gameInstructions:hover {
+/* .resetGame:hover, .closeInstructionModal:hover, .gameInstructions:hover {
   background-color: red;
-}
+} */
 .showModal {
   opacity: 1;
   visibility: visible;

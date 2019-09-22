@@ -10,8 +10,7 @@ const imageArrays = [
     'assets/images/punch_and_judy.jpg',
     'assets/images/spike.jpg',
     'assets/images/vicious.jpg',
-  ],
-  [
+  ], [
     'assets/images/edward.jpg',
     'assets/images/ein.jpg',
     'assets/images/faye.jpg',
@@ -20,8 +19,7 @@ const imageArrays = [
     'assets/images/punch_and_judy.jpg',
     'assets/images/spike.jpg',
     'assets/images/vicious.jpg',
-  ],
-  [
+  ], [
     'assets/images/edward.jpg',
     'assets/images/ein.jpg',
     'assets/images/faye.jpg',
@@ -72,11 +70,11 @@ function initiateApp() {
     $(".instructionModal").addClass("showModal");
   })
   $(".closeInstructionModal").click(closeModal);
-  $(document).click(function(event) {
-    if ($(event.target).is(".modal")) {
-      closeModal();
-    }
-  });
+  // $(document).click(function(event) {
+  //   if ($(event.target).is(".modal")) {
+  //     closeModal();
+  //   }
+  // });
   // debugger;
   console.log("currentDifficulty:", currentDifficulty);
   console.log("highestDifficultyCompleted:", highestDifficultyCompleted);
@@ -145,7 +143,6 @@ function handleCardClick(event) {
             $(".winModal").addClass("showModal");
           }, 500);
           $(".resetGame").click(function(event){
-            console.log("event.target", event.target);
             // debugger;
             if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
@@ -155,15 +152,24 @@ function handleCardClick(event) {
               currentDifficulty = 1;
               resetGame();
             }
-            if ($(event.target).hasClass("levelHard") && !$(".levelHard").hasClass("lockedLevel")) {
+            if ($(event.target).hasClass("levelHard")) {
+              if ($(".levelHard").hasClass("lockedLevel")) {
+                $(".lockedLevelModal").addClass("showModal");
+                setTimeout(function() {
+                  $(".lockedLevelModal").removeClass("showModal");
+                }, 3500);
+              } else {
               currentDifficulty = 2;
               resetGame();
+              }
             }
           });
           $(document).click(function(event) {
-            if ($(event.target).hasClass("winModal")) {
-              closeModal();
-              resetGame();
+            if ($(event.target).hasClass("winModal") || $(event.target).hasClass("resetGame")) {
+              if (!$(".lockedLevelModal").hasClass("showModal")) {
+                closeModal();
+                resetGame();                
+              }
             }
           });
         }
@@ -195,7 +201,7 @@ function resetStats() {
   cardMatches = null;
   matchAttempts = null;
   accuracy = null;
-  closeModal();
+  // closeModal();
   displayStats();
   $(".image").removeClass("isFlipped");
 }
