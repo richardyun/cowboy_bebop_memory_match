@@ -43,6 +43,7 @@ let accuracy = null;
 let difficultyLevel = ['Easy', 'Medium', 'Hard'];
 let currentDifficulty = 0;
 let highestDifficultyCompleted = 0;
+let intervalID = null;
 const maxCardMatches = imageArrays[currentDifficulty].length;
 
 function initiateApp() {
@@ -53,6 +54,13 @@ function initiateApp() {
   if (currentDifficulty > 0) {
     $("#extraSectionTitle").text("Timer");
     $(".gameInstructions").addClass("hidden");
+    if (currentDifficulty === 1) {
+      $("#extraSectionContainer").text("03:00");
+      startTimer(180, $("#extraSectionContainer"));
+    } else {
+      $("#extraSectionContainer").text("01:30");
+      startTimer(90, $("#extraSectionContainer"));
+    }
   } else {
     $("#extraSectionTitle").text("Help");
     $(".gameInstructions").removeClass("hidden");
@@ -70,14 +78,8 @@ function initiateApp() {
     $(".instructionModal").addClass("showModal");
   })
   $(".closeInstructionModal").click(closeModal);
-  // $(document).click(function(event) {
-  //   if ($(event.target).is(".modal")) {
-  //     closeModal();
-  //   }
-  // });
-  // debugger;
-  console.log("currentDifficulty:", currentDifficulty);
-  console.log("highestDifficultyCompleted:", highestDifficultyCompleted);
+  // console.log("currentDifficulty:", currentDifficulty);
+  // console.log("highestDifficultyCompleted:", highestDifficultyCompleted);
 }
 
 function duplicateArray(someArray) {
@@ -136,14 +138,11 @@ function handleCardClick(event) {
         // if (cardMatches === maxCardMatches) {
         if (cardMatches === 1) {
           gamesPlayed++;
-          // if (currentDifficulty > highestDifficultyCompleted) {
-          //   highestDifficultyCompleted = currentDifficulty;
-          // }
           setTimeout(function() {
             $(".winModal").addClass("showModal");
+            clearInterval(intervalID);
           }, 500);
           $(".resetGame").click(function(event){
-            // debugger;
             if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
               resetGame();
@@ -201,9 +200,7 @@ function resetStats() {
   cardMatches = null;
   matchAttempts = null;
   accuracy = null;
-  // closeModal();
   displayStats();
-  $(".image").removeClass("isFlipped");
 }
 
 function calculateAccuracy(){
@@ -220,6 +217,22 @@ function closeModal() {
 
 function resetGame() {
   resetStats();
+  $(".image").removeClass("isFlipped");
   $(".cardsContainer").empty();
+  clearInterval(intervalID);
   initiateApp();
+}
+
+function startTimer(duration, display) {
+  let timer = duration, minutes, seconds;
+  intervalID = setInterval(function() {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    display.text(minutes + ":" + seconds);
+    if (--timer < 0) {
+      clearInterval(intervalID);
+    }
+  }, 1000);
 }
