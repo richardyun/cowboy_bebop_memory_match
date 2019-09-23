@@ -42,9 +42,8 @@ body {
   border: 1px solid black;
   box-sizing: border-box;
   opacity: 0.7;
-  height: 10vmin;
-  width: 90%;
-  line-height: 10vmin;
+  height: 49%;
+  width: 100%;
   font-size: 10vmin;
 }
 .statsTextTitle, .statsText {
@@ -187,9 +186,6 @@ p, .winMessage {
   width: 60%;
   margin: 2vmin;
 }
-/* .resetGame:hover, .closeInstructionModal:hover, .gameInstructions:hover {
-  background-color: red;
-} */
 .showModal {
   opacity: 1;
   visibility: visible;
@@ -215,7 +211,7 @@ p, .winMessage {
   }
   .asideOne, .asideTwo {
     flex-direction: column;
-    width: 12%;
+    width: 13%;
     height: 99vh;
   }
   .asideOneItems, .asideTwoItems {
@@ -224,7 +220,7 @@ p, .winMessage {
     height: 24vmin;
   }
   .statsContent, .difficultyContent, .musicContent {
-    height: 10vmin;
+    height: 49%;
     width: 100%;
     font-size: 5.5vmin;
   }
@@ -266,7 +262,7 @@ p, .winMessage {
   .asideOne, .asideTwo {
     flex-direction: row;
     width: 99vw;
-    height: 15%;
+    height: 16%;
   }
   .asideOneItems, .asideTwoItems {
     flex-direction: column;
@@ -329,7 +325,7 @@ p, .winMessage {
     height: 24vmin;
   }
   .statsContent, .difficultyContent, .musicContent {
-    height: 10vmin;
+    height: 49%;
     width: 100%;
     font-size: 13vmin;
   }
@@ -381,7 +377,7 @@ p, .winMessage {
     height: 24vmin;
   }
   .statsContent, .difficultyContent, .musicContent {
-    height: 10vmin;
+    height: 49%;
     width: 100%;
     font-size: 12vmin;
   }
@@ -432,7 +428,7 @@ p, .winMessage {
     width: 50%;
   }
   .statsContent, .difficultyContent, .musicContent {
-    height: 90%;
+    height: 99%;
   }
   #difficultyTitle, #musicContainer {
     width: 54%;
@@ -515,8 +511,7 @@ p, .winMessage {
     height: 30%;
   }
   .statsContent, .difficultyContent, .musicContent {
-    height: 90%;
-    font-size: 8vmin;
+    height: 99%;
   }
   .statsText, .statsTextTitle {
     height: 100%;
