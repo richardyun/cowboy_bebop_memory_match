@@ -62,7 +62,7 @@ body {
   font-family: "Cute Font", cursive;
 }
 main {
-  background-color: darkblue;
+  /* background-color: darkblue; */
   border: 1px solid black;
   box-sizing: border-box;
   width: 99vh;
@@ -115,7 +115,7 @@ main {
   }
 }
 .cardFaceBackground {
-  background-color: black;
+  /* background-color: black; */
   z-index: 1;
 }
 .cardBack {
@@ -223,9 +223,8 @@ p, .winMessage {
   }
   .statsContent, .difficultyContent, .musicContent {
     height: 10vmin;
-    width: 90%;
-    line-height: 10vmin;
-    font-size: 5vmin;
+    width: 100%;
+    font-size: 5.5vmin;
   }
   #bannerContainer {
     width: 100%;
@@ -334,9 +333,8 @@ p, .winMessage {
   }
   .statsContent, .difficultyContent, .musicContent {
     height: 10vmin;
-    width: 90%;
-    line-height: 10vmin;
-    font-size: 11vmin;
+    width: 100%;
+    font-size: 13vmin;
   }
   #bannerContainer {
     width: 100%;
@@ -387,9 +385,8 @@ p, .winMessage {
   }
   .statsContent, .difficultyContent, .musicContent {
     height: 10vmin;
-    width: 90%;
-    line-height: 10vmin;
-    font-size: 10vmin;
+    width: 100%;
+    font-size: 12vmin;
   }
   #bannerContainer {
     width: 100%;
