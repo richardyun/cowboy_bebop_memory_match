@@ -45,6 +45,14 @@ let currentDifficulty = 0;
 let highestDifficultyCompleted = 0;
 let intervalID = null;
 const maxCardMatches = imageArrays[currentDifficulty].length;
+const musicArray = [
+  'assets/audio/cowboy_bebop_bell_peppers_&_beef_kendall_x_mukashi.mp3',
+  'assets/audio/cowboy_bebop_chicken_bone_ost3_blue.mp3',
+  'assets/audio/cowboy_bebop_tank!_op.mp3'
+];
+// const currentMusicURL = musicArray[currentDifficulty];
+// const gameMusic = new Audio(currentMusicURL);
+// const playPromise = gameMusic.play();
 
 function initiateApp() {
   if (currentDifficulty > highestDifficultyCompleted) {
@@ -78,8 +86,7 @@ function initiateApp() {
     $(".instructionModal").addClass("showModal");
   })
   $(".closeInstructionModal").click(closeModal);
-  // console.log("currentDifficulty:", currentDifficulty);
-  // console.log("highestDifficultyCompleted:", highestDifficultyCompleted);
+  // playAudio();
 }
 
 function duplicateArray(someArray) {
@@ -236,3 +243,17 @@ function startTimer(duration, display) {
     }
   }, 1000);
 }
+
+// function playAudio() {
+//   if (playPromise !== undefined) {
+//     playPromise.then(() =>{
+//       gameMusic.play();
+//     }).catch(error => {
+//       console.log("Audio autoplay prevented.", error);
+//     });    
+//   }
+// }
+
+// function pauseAudio() {
+//   gameMusic.pause();
+// }
