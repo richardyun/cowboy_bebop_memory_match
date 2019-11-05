@@ -50,8 +50,9 @@ const musicArray = [
   'assets/audio/cowboy_bebop_chicken_bone_ost3_blue.mp3',
   'assets/audio/cowboy_bebop_tank!_op.mp3'
 ];
-const currentMusicURL = musicArray[currentDifficulty];
-const gameMusic = new Audio(currentMusicURL);
+// const currentMusicURL = musicArray[currentDifficulty];
+// const gameMusic = new Audio(currentMusicURL);
+let gameMusic = null;
 let isMusicPlaying = false;
 // const playPromise = gameMusic.play();
 
@@ -158,11 +159,13 @@ function handleCardClick(event) {
             if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
               playAudio();
+              // changeMusic();
               resetGame();
             }
             if ($(event.target).hasClass("levelMedium")) {
               currentDifficulty = 1;
               playAudio();
+              // changeMusic();
               resetGame();
             }
             if ($(event.target).hasClass("levelHard")) {
@@ -174,6 +177,7 @@ function handleCardClick(event) {
               } else {
               currentDifficulty = 2;
               playAudio();
+              // changeMusic();
               resetGame();
               }
             }
@@ -253,14 +257,15 @@ function startTimer(duration, display) {
 }
 
 function playAudio() {
+  gameMusic = new Audio(musicArray[currentDifficulty]);
   console.log("Current Difficulty:", currentDifficulty);
-  console.log("Music URL:", currentMusicURL);
+  console.log("Music URL:", musicArray[currentDifficulty]);
   if (currentDifficulty === 0) {
     gameMusic.loop = true;
+    gameMusic.load();
   } else {
     gameMusic.loop = false;
   }
-  gameMusic.load();
   gameMusic.volume = 0.2;
   const playPromise = gameMusic.play();
   if (playPromise !== undefined) {
@@ -294,7 +299,16 @@ function fadeMusic() {
         gameMusic.volume = vol;
       } else {
         clearInterval(fadeout);
+        gameMusic.pause();
         isMusicPlaying = false;
       }
     }, interval); 
+}
+
+function changeMusic() {
+  let music = musicArray[currentDifficulty];
+  // gameMusic.pause();
+  gameMusic.setAttribute('src', music);
+  gameMusic.load();
+  gameMusic.play();
 }
