@@ -50,8 +50,9 @@ const musicArray = [
   'assets/audio/cowboy_bebop_chicken_bone_ost3_blue.mp3',
   'assets/audio/cowboy_bebop_tank!_op.mp3'
 ];
-// const currentMusicURL = musicArray[currentDifficulty];
-// const gameMusic = new Audio(currentMusicURL);
+const currentMusicURL = musicArray[currentDifficulty];
+const gameMusic = new Audio(currentMusicURL);
+let isMusicPlaying = false;
 // const playPromise = gameMusic.play();
 
 function initiateApp() {
@@ -88,6 +89,7 @@ function initiateApp() {
   $(".closeInstructionModal").click(closeModal);
   $(".startGame").click(closeModal);
   $(".startGame").click(playAudio);
+  $(".musicButton").click(toggleAudio);
   // playAudio();
 }
 
@@ -247,19 +249,27 @@ function startTimer(duration, display) {
 }
 
 function playAudio() {
-  const currentMusicURL = musicArray[currentDifficulty];
-  const gameMusic = new Audio(currentMusicURL);
+  // const currentMusicURL = musicArray[currentDifficulty];
+  // const gameMusic = new Audio(currentMusicURL);
   gameMusic.volume = 0.2;
   const playPromise = gameMusic.play();
   if (playPromise !== undefined) {
     playPromise.then(() =>{
       gameMusic.play();
+      isMusicPlaying = true;
     }).catch(error => {
       console.log("Audio autoplay prevented.", error);
+      isMusicPlaying = false;
     });    
   }
 }
 
-function pauseAudio() {
-  gameMusic.pause();
+function toggleAudio() {
+  if (isMusicPlaying) {
+    gameMusic.pause();
+    isMusicPlaying = false;
+  } else {
+    gameMusic.play();
+    isMusicPlaying = true;
+  }
 }
