@@ -160,14 +160,14 @@ function handleCardClick(event) {
           $(".resetGame").click(function(event){
             if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
-              playAudio();
-              // changeMusic();
+              // playAudio();
+              changeMusic();
               resetGame();
             }
             if ($(event.target).hasClass("levelMedium")) {
               currentDifficulty = 1;
-              playAudio();
-              // changeMusic();
+              // playAudio();
+              changeMusic();
               resetGame();
             }
             if ($(event.target).hasClass("levelHard")) {
@@ -178,8 +178,8 @@ function handleCardClick(event) {
                 }, 3500);
               } else {
               currentDifficulty = 2;
-              playAudio();
-              // changeMusic();
+              // playAudio();
+              changeMusic();
               resetGame();
               }
             }
@@ -318,11 +318,21 @@ function fadeMusic() {
     }, interval); 
 }
 
-// function changeMusic() {
-//   let music = musicArray[currentDifficulty];
-//   gameMusic.pause();
-//   gameMusic.setAttribute('src', music);
-//   gameMusic.load();
-//   gameMusic.volume = 0.2;
-//   gameMusic.play();
-// }
+function changeMusic() {
+  let music = musicArray[currentDifficulty];
+  // gameMusic.pause();
+  gameMusic = new Audio(music)
+  // gameMusic.setAttribute('src', music);
+  gameMusic.load();
+  gameMusic.volume = 0.2;
+  const playPromise = gameMusic.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() =>{
+      gameMusic.play();
+      isMusicPlaying = true;
+    }).catch(error => {
+      console.log("Audio autoplay prevented.", error);
+      isMusicPlaying = false;
+    });    
+  }
+}
