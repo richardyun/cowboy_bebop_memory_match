@@ -251,6 +251,11 @@ function startTimer(duration, display) {
 function playAudio() {
   // const currentMusicURL = musicArray[currentDifficulty];
   // const gameMusic = new Audio(currentMusicURL);
+  if (currentDifficulty === 0) {
+    gameMusic.loop = true;
+  } else {
+    gameMusic.loop = false;
+  }
   gameMusic.volume = 0.2;
   const playPromise = gameMusic.play();
   if (playPromise !== undefined) {
