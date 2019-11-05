@@ -50,11 +50,9 @@ const musicArray = [
   'assets/audio/cowboy_bebop_chicken_bone_ost3_blue.mp3',
   'assets/audio/cowboy_bebop_tank!_op.mp3'
 ];
-// const currentMusicURL = musicArray[currentDifficulty];
-// const gameMusic = new Audio(currentMusicURL);
 let gameMusic = null;
 let isMusicPlaying = false;
-// const playPromise = gameMusic.play();
+
 
 function initiateApp() {
   if (currentDifficulty > highestDifficultyCompleted) {
@@ -89,9 +87,8 @@ function initiateApp() {
   })
   $(".closeInstructionModal").click(closeModal);
   $(".startGame").click(closeModal);
-  $(".startGame").click(playAudio);
+  $(".startGame").click(initializeAudio);
   $(".musicButton").click(toggleAudio);
-  // playAudio();
 }
 
 function duplicateArray(someArray) {
@@ -154,19 +151,15 @@ function handleCardClick(event) {
           setTimeout(function() {
             $(".winModal").addClass("showModal");
             clearInterval(intervalID);
-            // fadeMusic();
-            // delayedDisabledLevelButtons();
           }, 500);
           $(".resetGame").click(function(event){
             if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
-              // playAudio();
               changeMusic();
               resetGame();
             }
             if ($(event.target).hasClass("levelMedium")) {
               currentDifficulty = 1;
-              // playAudio();
               changeMusic();
               resetGame();
             }
@@ -178,7 +171,6 @@ function handleCardClick(event) {
                 }, 3500);
               } else {
               currentDifficulty = 2;
-              // playAudio();
               changeMusic();
               resetGame();
               }
@@ -244,17 +236,6 @@ function resetGame() {
   initiateApp();
 }
 
-// function delayedDisabledLevelButtons() {
-//   $("#levelEasy").disabled = true;
-//   $("#levelMedium").disabled = true;
-//   $("#levelHard").disabled = true;
-//   setTimeout(function() {
-//     $("#levelEasy").disabled = false;
-//     $("#levelMedium").disabled = false;
-//     $("#levelHard").disabled = false;
-//   }, 3000);
-// }
-
 function startTimer(duration, display) {
   let timer = duration, minutes, seconds;
   intervalID = setInterval(function() {
@@ -269,24 +250,38 @@ function startTimer(duration, display) {
   }, 1000);
 }
 
-function playAudio() {
-  gameMusic = new Audio(musicArray[currentDifficulty]);
-  console.log("Current Difficulty:", currentDifficulty);
-  console.log("Music URL:", musicArray[currentDifficulty]);
-  if (currentDifficulty === 0) {
-    gameMusic.loop = true;
-    gameMusic.load();
-  } else {
-    gameMusic.loop = false;
-  }
+function initializeAudio() {
+  gameMusic = new Audio('assets/audio/cowboy_bebop_bell_peppers_&_beef_kendall_x_mukashi.mp3');
+  gameMusic.loop = true;
   gameMusic.volume = 0.2;
   const playPromise = gameMusic.play();
   if (playPromise !== undefined) {
-    playPromise.then(() =>{
+    playPromise.then(() => {
       gameMusic.play();
       isMusicPlaying = true;
     }).catch(error => {
       console.log("Audio autoplay prevented.", error);
+      isMusicPlaying = false;
+    });    
+  }
+}
+
+function changeMusic() {
+  if (currentDifficulty === 0) {
+    gameMusic.loop = true;
+  } else {
+    gameMusic.loop = false;
+  }
+  let music = musicArray[currentDifficulty];
+  gameMusic.setAttribute('src', music);
+  gameMusic.volume = 0.2;
+  const playPromise = gameMusic.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      gameMusic.play();
+      isMusicPlaying = true;
+    }).catch(error => {
+      console.log("Audio play prevented.", error);
       isMusicPlaying = false;
     });    
   }
@@ -316,23 +311,4 @@ function fadeMusic() {
         isMusicPlaying = false;
       }
     }, interval); 
-}
-
-function changeMusic() {
-  let music = musicArray[currentDifficulty];
-  // gameMusic.pause();
-  gameMusic = new Audio(music)
-  // gameMusic.setAttribute('src', music);
-  gameMusic.load();
-  gameMusic.volume = 0.2;
-  const playPromise = gameMusic.play();
-  if (playPromise !== undefined) {
-    playPromise.then(() =>{
-      gameMusic.play();
-      isMusicPlaying = true;
-    }).catch(error => {
-      console.log("Audio autoplay prevented.", error);
-      isMusicPlaying = false;
-    });    
-  }
 }
