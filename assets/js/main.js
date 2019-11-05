@@ -253,6 +253,8 @@ function startTimer(duration, display) {
 }
 
 function playAudio() {
+  console.log("Current Difficulty:", currentDifficulty);
+  console.log("Music URL:", currentMusicURL);
   if (currentDifficulty === 0) {
     gameMusic.loop = true;
   } else {
