@@ -284,7 +284,7 @@ function toggleAudio() {
 
 function fadeMusic() {
   let vol = 0.20;
-  const interval = 500;
+  const interval = 300;
   const fadeout = setInterval(
     function() {
       if (vol > 0.02) {
