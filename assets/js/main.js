@@ -87,6 +87,7 @@ function initiateApp() {
   })
   $(".closeInstructionModal").click(closeModal);
   $(".startGame").click(closeModal);
+  $(".startGame").click(playAudio);
   // playAudio();
 }
 
@@ -245,16 +246,20 @@ function startTimer(duration, display) {
   }, 1000);
 }
 
-// function playAudio() {
-//   if (playPromise !== undefined) {
-//     playPromise.then(() =>{
-//       gameMusic.play();
-//     }).catch(error => {
-//       console.log("Audio autoplay prevented.", error);
-//     });    
-//   }
-// }
+function playAudio() {
+  const currentMusicURL = musicArray[currentDifficulty];
+  const gameMusic = new Audio(currentMusicURL);
+  gameMusic.volume = 0.2;
+  const playPromise = gameMusic.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() =>{
+      gameMusic.play();
+    }).catch(error => {
+      console.log("Audio autoplay prevented.", error);
+    });    
+  }
+}
 
-// function pauseAudio() {
-//   gameMusic.pause();
-// }
+function pauseAudio() {
+  gameMusic.pause();
+}
