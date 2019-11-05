@@ -86,6 +86,7 @@ function initiateApp() {
     $(".instructionModal").addClass("showModal");
   })
   $(".closeInstructionModal").click(closeModal);
+  $(".startGame").click(closeModal);
   // playAudio();
 }
 
