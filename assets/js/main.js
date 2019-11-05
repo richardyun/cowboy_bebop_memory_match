@@ -150,10 +150,12 @@ function handleCardClick(event) {
         // if (cardMatches === maxCardMatches) {
         if (cardMatches === 1) {
           gamesPlayed++;
+          fadeMusic();
           setTimeout(function() {
             $(".winModal").addClass("showModal");
             clearInterval(intervalID);
-            fadeMusic();
+            // fadeMusic();
+            // delayedDisabledLevelButtons();
           }, 500);
           $(".resetGame").click(function(event){
             if ($(event.target).hasClass("levelEasy")) {
@@ -242,6 +244,17 @@ function resetGame() {
   initiateApp();
 }
 
+// function delayedDisabledLevelButtons() {
+//   $("#levelEasy").disabled = true;
+//   $("#levelMedium").disabled = true;
+//   $("#levelHard").disabled = true;
+//   setTimeout(function() {
+//     $("#levelEasy").disabled = false;
+//     $("#levelMedium").disabled = false;
+//     $("#levelHard").disabled = false;
+//   }, 3000);
+// }
+
 function startTimer(duration, display) {
   let timer = duration, minutes, seconds;
   intervalID = setInterval(function() {
@@ -305,11 +318,11 @@ function fadeMusic() {
     }, interval); 
 }
 
-function changeMusic() {
-  let music = musicArray[currentDifficulty];
-  gameMusic.pause();
-  gameMusic.setAttribute('src', music);
-  gameMusic.load();
-  gameMusic.volume = 0.2;
-  gameMusic.play();
-}
+// function changeMusic() {
+//   let music = musicArray[currentDifficulty];
+//   gameMusic.pause();
+//   gameMusic.setAttribute('src', music);
+//   gameMusic.load();
+//   gameMusic.volume = 0.2;
+//   gameMusic.play();
+// }
