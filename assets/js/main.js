@@ -157,10 +157,12 @@ function handleCardClick(event) {
           $(".resetGame").click(function(event){
             if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
+              playAudio();
               resetGame();
             }
             if ($(event.target).hasClass("levelMedium")) {
               currentDifficulty = 1;
+              playAudio();
               resetGame();
             }
             if ($(event.target).hasClass("levelHard")) {
@@ -171,6 +173,7 @@ function handleCardClick(event) {
                 }, 3500);
               } else {
               currentDifficulty = 2;
+              playAudio();
               resetGame();
               }
             }
@@ -250,13 +253,12 @@ function startTimer(duration, display) {
 }
 
 function playAudio() {
-  // const currentMusicURL = musicArray[currentDifficulty];
-  // const gameMusic = new Audio(currentMusicURL);
   if (currentDifficulty === 0) {
     gameMusic.loop = true;
   } else {
     gameMusic.loop = false;
   }
+  gameMusic.load();
   gameMusic.volume = 0.2;
   const playPromise = gameMusic.play();
   if (playPromise !== undefined) {
