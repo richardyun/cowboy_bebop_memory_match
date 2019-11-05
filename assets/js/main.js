@@ -291,7 +291,7 @@ function toggleAudio() {
 
 function fadeMusic() {
   let vol = 0.20;
-  const interval = 300;
+  const interval = 100;
   const fadeout = setInterval(
     function() {
       if (vol > 0.02) {
@@ -307,8 +307,9 @@ function fadeMusic() {
 
 function changeMusic() {
   let music = musicArray[currentDifficulty];
-  // gameMusic.pause();
+  gameMusic.pause();
   gameMusic.setAttribute('src', music);
   gameMusic.load();
+  gameMusic.volume = 0.2;
   gameMusic.play();
 }
