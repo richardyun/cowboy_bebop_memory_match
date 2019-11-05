@@ -152,6 +152,7 @@ function handleCardClick(event) {
           setTimeout(function() {
             $(".winModal").addClass("showModal");
             clearInterval(intervalID);
+            fadeMusic();
           }, 500);
           $(".resetGame").click(function(event){
             if ($(event.target).hasClass("levelEasy")) {
@@ -277,4 +278,19 @@ function toggleAudio() {
     gameMusic.play();
     isMusicPlaying = true;
   }
+}
+
+function fadeMusic() {
+  let vol = 0.20;
+  const interval = 500;
+  const fadeout = setInterval(
+    function() {
+      if (vol > 0.02) {
+        vol -= 0.02;
+        gameMusic.volume = vol;
+      } else {
+        clearInterval(fadeout);
+        isMusicPlaying = false;
+      }
+    }, interval); 
 }
