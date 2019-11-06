@@ -89,6 +89,7 @@ function initiateApp() {
   $(".startGame").click(closeModal);
   $(".startGame").click(initializeAudio);
   $(".musicButton").click(toggleAudio);
+  $(".tryAgain").click(changeMusic);
 }
 
 function duplicateArray(someArray) {
