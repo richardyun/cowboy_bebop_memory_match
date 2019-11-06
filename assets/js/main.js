@@ -248,6 +248,7 @@ function resetGame() {
 }
 
 function startTimer(duration, display) {
+  $("#timerText").css("color", "lightgreen");
   let timer = duration, minutes, seconds;
   intervalID = setInterval(function() {
     minutes = parseInt(timer / 60, 10);
