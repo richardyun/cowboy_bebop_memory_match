@@ -159,7 +159,7 @@ p, .winMessage, .preGameMessage, .gameOverMessage {
   font-size: 15vmin;
 }
 .startGame, .resetGame, .closeInstructionModal, .musicButton, .gameInstructions {
-  border-radius: 4px;
+  border-radius: 10px;
   background-color: whitesmoke;
   border: 0.5vmin solid black;
   color: black;
