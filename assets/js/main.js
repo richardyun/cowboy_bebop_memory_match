@@ -62,16 +62,17 @@ function initiateApp() {
   if (currentDifficulty > 0) {
     $("#extraSectionTitle").text("Timer");
     $(".gameInstructions").addClass("hidden");
+    $("#timerText").removeClass("hidden");
     $("#extrasContainer").css({
       "background-color":"black", 
       "color":"lightgreen"
     });
     if (currentDifficulty === 1) {
-      $("#extraSectionContainer").text("03:00");
-      startTimer(180, $("#extraSectionContainer"));
+      $("#timerText").text("03:00");
+      startTimer(180, $("#timerText"));
     } else {
-      $("#extraSectionContainer").text("01:30");
-      startTimer(90, $("#extraSectionContainer"));
+      $("#timerText").text("01:30");
+      startTimer(90, $("#timerText"));
     }
   } else {
     $("#extraSectionTitle").text("Help");
@@ -79,6 +80,7 @@ function initiateApp() {
       "background-color":"lightsteelblue", 
       "color":"black"
     });
+    $("#timerText").addClass("hidden");
     $(".gameInstructions").removeClass("hidden");
   }
   if (highestDifficultyCompleted < 1) {
@@ -251,7 +253,7 @@ function startTimer(duration, display) {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
     if (minutes === 0 && seconds <= 10) {
-      $("#extraSectionContainer").css("color", "#FF0000");
+      $("#timerText").css("color", "#FF0000");
     }
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
