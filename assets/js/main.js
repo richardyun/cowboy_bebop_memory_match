@@ -62,6 +62,10 @@ function initiateApp() {
   if (currentDifficulty > 0) {
     $("#extraSectionTitle").text("Timer");
     $(".gameInstructions").addClass("hidden");
+    $("#extrasContainer").css({
+      "background-color":"black", 
+      "color":"lightgreen"
+    });
     if (currentDifficulty === 1) {
       $("#extraSectionContainer").text("03:00");
       startTimer(180, $("#extraSectionContainer"));
@@ -71,6 +75,10 @@ function initiateApp() {
     }
   } else {
     $("#extraSectionTitle").text("Help");
+    $("#extrasContainer").css({
+      "background-color":"lightsteelblue", 
+      "color":"black"
+    });
     $(".gameInstructions").removeClass("hidden");
   }
   if (highestDifficultyCompleted < 1) {
