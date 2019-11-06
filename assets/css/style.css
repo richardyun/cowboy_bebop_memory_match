@@ -131,7 +131,7 @@ main {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
   visibility: hidden;
   transform: scale(1.1);
@@ -141,8 +141,10 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: lightskyblue;
+  background-color: black;
+  color: lightgreen;
   padding: 1rem 1.5rem;
+  border: .3em solid lightsteelblue;
   border-radius: 0.5rem;
   text-align: center;
   width: 80vh;
