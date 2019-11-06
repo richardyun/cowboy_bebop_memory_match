@@ -198,8 +198,7 @@ p, .winMessage, .preGameMessage, .gameOverMessage {
 #gameCountTitle, 
 #matchAttemptsTitle, 
 #matchAccuracyTitle, 
-#extrasTitle, 
-#extrasContainer {
+#extrasTitle {
   background-color: lightsteelblue;
 }
 #difficultyContainer, 
@@ -207,7 +206,7 @@ p, .winMessage, .preGameMessage, .gameOverMessage {
 #matchAttemptsContainer, 
 #matchAccuracyContainer {
   color: lightgreen;
-  background: black;
+  background-color: black;
 }
 
 
