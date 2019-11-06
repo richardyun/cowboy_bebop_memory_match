@@ -245,6 +245,7 @@ function startTimer(duration, display) {
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.text(minutes + ":" + seconds);
     if (--timer < 0) {
+      fadeMusic();
       $(".gameOverModal").addClass("showModal");
       clearInterval(intervalID);
     }
