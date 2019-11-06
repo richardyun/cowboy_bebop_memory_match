@@ -242,6 +242,9 @@ function startTimer(duration, display) {
   intervalID = setInterval(function() {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
+    if (minutes === 0 && seconds <= 10) {
+      $("#extraSectionContainer").css("color", "#FF0000");
+    }
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.text(minutes + ":" + seconds);
