@@ -59,7 +59,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.statsTextTitle, .statsText, .difficultyLevel, .musicPlayer, .winMessage, .preGameMessage, p {
+.statsTextTitle, .statsText, .difficultyLevel, .musicPlayer, .winMessage, .preGameMessage, .gameOverMessage, p {
   font-family: "Cute Font", cursive;
 }
 main {
@@ -151,7 +151,7 @@ main {
   width: 80vh;
   height: 80vh;
 }
-p, .winMessage, .preGameMessage {
+p, .winMessage, .preGameMessage, .gameOverMessage {
   font-size: 8vmin;
   margin: 0;
 }
