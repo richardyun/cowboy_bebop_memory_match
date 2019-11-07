@@ -230,16 +230,16 @@ main {
   }
   .asideOne, .asideTwo {
     flex-direction: column;
-    width: 13%;
+    width: 12.5%;
     height: 99vh;
   }
   .asideOneItems, .asideTwoItems {
     flex-direction: column;
     width: 100%;
-    height: 24vmin;
+    height: 25vmin;
   }
   .statsContent, .difficultyContent, .musicContent {
-    height: 49%;
+    height: 49.5%;
     width: 100%;
     font-size: 5.5vmin;
   }
@@ -264,8 +264,8 @@ main {
   }
   .musicButton, .gameInstructions {
     font-size: 2.5vmin;
-    width: 100%;
-    height: 70%;
+    width: 90%;
+    height: 60%;
   }
 }
 
@@ -280,16 +280,16 @@ main {
   }
   .asideOne, .asideTwo {
     flex-direction: row;
-    width: 99vw;
+    width: 99.5vw;
     height: 16%;
   }
   .asideOneItems, .asideTwoItems {
     flex-direction: column;
     height: 100%;
-    width: 22vmin;
+    width: 21.5vmin;
   }
   .asideTwoItems {
-    width: 24vmin;
+    width: 24.5vmin;
   }
   .statsContent, .difficultyContent, .musicContent {
     height: 49%;
