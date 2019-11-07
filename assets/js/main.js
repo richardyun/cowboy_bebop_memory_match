@@ -319,37 +319,41 @@ function resetStats() {
   displayStats();
 }
 
-
+//////////////////////////////
+////////  GAME TIMER  ////////
+//////////////////////////////
 
 function startTimer(duration, display) {
-  $("#timerText").removeClass("flash");
-  $("#timerText").css("color", "lightgreen");
+  $("#timerText").removeClass("flash").css("color", "lightgreen");    // set default non-flashing class and text color to lightgreen
   let timer = duration, minutes, seconds;
   intervalID = setInterval(function() {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
     if (minutes === 0 && seconds <= 45) {
-      $("#timerText").css("color", "#ffff00");
+      $("#timerText").css("color", "#ffff00");    // at 45 seconds set the timer text color to yellow
     }
     if (minutes === 0 && seconds <= 30) {
-      $("#timerText").css("color", "#ffa500");
+      $("#timerText").css("color", "#ffa500");    // at 30 seconds set the timer text color to orange
     }
     if (minutes === 0 && seconds <= 20) {
-      $("#timerText").css("color", "#ff0000");
+      $("#timerText").css("color", "#ff0000");    // at 20 seconds set the timer text color to red
     }
     if (minutes === 0 && seconds <= 10) {
-      $("#timerText").addClass("flash");
+      $("#timerText").addClass("flash");    // at 10 seconds make the the timer flash between red and white
     }
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.text(minutes + ":" + seconds);
-    if (--timer < 0) {
+    if (--timer < 0) {    // ending procedure of the timer
       fadeMusic();
       $(".gameOverModal").addClass("showModal");
       clearInterval(intervalID);
     }
   }, 1000);
 }
+
+
+
 
 function initializeAudio() {
   gameMusic = new Audio('assets/audio/cowboy_bebop_bell_peppers_&_beef_kendall_x_mukashi.mp3');
