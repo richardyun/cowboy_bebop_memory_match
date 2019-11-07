@@ -87,8 +87,7 @@ function initiateApp() {
     $(".instructionModal").addClass("showModal");
   })
   $(".closeInstructionModal").click(closeModal);    // game instruction modal's 'CLOSE' button
-  $(".startGame").click(closeModal);    // pre-game modal 'PLAY' button
-  $(".startGame").click(initializeAudio);   // pre-game modal 'PLAY' button
+  $(".startGame").click(closeModal).click(initializeAudio);    // pre-game modal 'PLAY' button
   $(".musicButton").click(toggleAudio);   // play-pause music button
   $(".tryAgain").click(changeMusic);    // 'TRY AGAIN' button after game over modal from timer run-out
 
