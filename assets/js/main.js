@@ -165,6 +165,18 @@ function createMultipleCardElements() {   // utilizes map function to create sin
 ////////  GAME MECHANICS FUNCTIONS  ////////
 ////////////////////////////////////////////
 
+// Clear Card Clicked Variables //
+function clearCardsClicked() {
+  firstCardClicked = null;
+  secondCardClicked = null;
+}
+
+// Clear Clicked Cards Image URLs //
+function clearClickedCardsImageURLs() {
+  firstCardClickedImageURL = null;
+  secondCardClickedImageURL = null;
+}
+
 // Card Click Handler Function //
 function handleCardClick(event) {
   if ($(event.currentTarget).hasClass("isFlipped") || twoCardsClicked) {
@@ -193,10 +205,8 @@ function misMatchedCardsAction() {
     twoCardsClicked = false;
     firstCardClicked.removeClass("isFlipped");
     secondCardClicked.removeClass("isFlipped");
-    firstCardClicked = null;
-    secondCardClicked = null;
-    firstCardClickedImageURL = null;
-    secondCardClickedImageURL = null;
+    clearCardsClicked();
+    clearClickedCardsImageURLs();
   }, 1500);
 }
 
@@ -206,8 +216,7 @@ function matchedCardsAction() {
   matchAttempts++;
   cardMatches++;
   gameWinConditionCheck();
-  firstCardClicked = null;
-  secondCardClicked = null;
+  clearCardsClicked();
 }
 
 // Check Win Condition //
@@ -230,13 +239,9 @@ function postWinLevelSelection() {
   $(".resetGame").click(function(event) {
     if ($(event.target).hasClass("levelEasy")) {
       currentDifficulty = 0;
-      changeMusic();
-      resetGame();
     }
     if ($(event.target).hasClass("levelMedium")) {
       currentDifficulty = 1;
-      changeMusic();
-      resetGame();
     }
     if ($(event.target).hasClass("levelHard")) {
       if ($(".levelHard").hasClass("lockedLevel")) {    // show locked level modal if level 'HARD' is locked
@@ -246,10 +251,10 @@ function postWinLevelSelection() {
         }, 3500);
       } else {
       currentDifficulty = 2;
-      changeMusic();
-      resetGame();
       }
     }
+    changeMusic();
+    resetGame();
   });
 }
 
