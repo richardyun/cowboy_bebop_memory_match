@@ -79,7 +79,7 @@ const musicArray = [
 function initiateApp() {
 
   // Card Generation //
-  const duplicatedImageArray = duplicateArray(imageArrays[currentDifficulty]);    // use the duplicateArray function to make doubles of the images
+  const duplicatedImageArray = duplicateArray(imageArrays[currentDifficulty]);    // use the duplicateArray function to make doubles of the images (selects images depending on difficulty level)
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);    // use the shuffleArray function to randomly arrange the newly duplicated images
   createMultipleCardElements();   // use the createMultipleCardElements function to generate card elements using the array of duplicated, shuffled images
 
@@ -352,9 +352,11 @@ function startTimer(duration, display) {
   }, 1000);
 }
 
+///////////////////////////////////
+////////  MUSIC FUNCTIONS  ////////
+///////////////////////////////////
 
-
-
+// Starting Game Music Play //
 function initializeAudio() {
   gameMusic = new Audio('assets/audio/cowboy_bebop_bell_peppers_&_beef_kendall_x_mukashi.mp3');
   gameMusic.loop = true;
@@ -371,13 +373,14 @@ function initializeAudio() {
   }
 }
 
+// Changing Level Difficulty Changes Music Track //
 function changeMusic() {
-  if (currentDifficulty === 0) {
+  if (currentDifficulty === 0) {    // only the 'EASY' level allows looping of the music track
     gameMusic.loop = true;
   } else {
     gameMusic.loop = false;
   }
-  let music = musicArray[currentDifficulty];
+  let music = musicArray[currentDifficulty];    // utilizes the difficulty level to pick the audio track
   gameMusic.setAttribute('src', music);
   gameMusic.volume = 0.2;
   const playPromise = gameMusic.play();
@@ -392,6 +395,7 @@ function changeMusic() {
   }
 }
 
+// Pause or Play Music //
 function toggleAudio() {
   if (isMusicPlaying) {
     gameMusic.pause();
@@ -402,6 +406,7 @@ function toggleAudio() {
   }
 }
 
+// Fade Music Out Upon Game End //
 function fadeMusic() {
   let vol = 0.20;
   const interval = 100;
