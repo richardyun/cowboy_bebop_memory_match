@@ -1,3 +1,5 @@
+
+
 $(document).ready(initiateApp);
 
 
@@ -70,28 +72,32 @@ const musicArray = [
 ];
 
 
+//////// INITIATE APP FUNCTION ////////
 
 function initiateApp() {
-  if (currentDifficulty > highestDifficultyCompleted) {
+
+  // Card Generation //
+  const duplicatedImageArray = duplicateArray(imageArrays[currentDifficulty]);    // use the duplicateArray function to make doubles of the images
+  shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);    // use the shuffleArray function to randomly arrange the newly duplicated images
+  createMultipleCardElements();   // use the createMultipleCardElements function to generate card elements using the array of duplicated, shuffled images
+
+  // Click Handlers //
+  $(".scene").on("click", ".card", handleCardClick);    // card
+  $(".gameInstructions").click(function() {   // 'INSTRUCTIONS' button
+    $(".instructionModal").addClass("showModal");
+  })
+  $(".closeInstructionModal").click(closeModal);    // game instruction modal's 'CLOSE' button
+  $(".startGame").click(closeModal);    // pre-game modal 'PLAY' button
+  $(".startGame").click(initializeAudio);   // pre-game modal 'PLAY' button
+  $(".musicButton").click(toggleAudio);   // play-pause music button
+  $(".tryAgain").click(changeMusic);    // 'TRY AGAIN' button after game over modal from timer run-out
+
+  // Game Difficulty //
+  if (currentDifficulty > highestDifficultyCompleted) {   // keeps track of the highest level difficulty played
     highestDifficultyCompleted = currentDifficulty;
   }
-  $("#difficultyDegree").text(difficultyLevel[currentDifficulty]);
-  if (currentDifficulty > 0) {
-    $("#extraSectionTitle").text("Timer");
-    $(".gameInstructions").addClass("hidden");
-    $("#timerText").removeClass("hidden");
-    $("#extrasContainer").css({
-      "background-color":"black", 
-      "color":"lightgreen"
-    });
-    if (currentDifficulty === 1) {
-      $("#timerText").text("03:00");
-      startTimer(180, $("#timerText"));
-    } else {
-      $("#timerText").text("01:30");
-      startTimer(90, $("#timerText"));
-    }
-  } else {
+  $("#difficultyDegree").text(difficultyLevel[currentDifficulty]);    // label to show the current difficulty level
+  if (currentDifficulty === 0) {    // if the current level is 'EASY' then only the 'HELP'/ Instructions should show in the extras section
     $("#extraSectionTitle").text("Help");
     $("#extrasContainer").css({
       "background-color":"lightsteelblue", 
@@ -99,25 +105,31 @@ function initiateApp() {
     });
     $("#timerText").addClass("hidden");
     $(".gameInstructions").removeClass("hidden");
+  } else {    // if the current level is higher than 'EASY' then the timer should show
+    $("#extraSectionTitle").text("Timer");
+    $(".gameInstructions").addClass("hidden");
+    $("#timerText").removeClass("hidden");
+    $("#extrasContainer").css({
+      "background-color":"black", 
+      "color":"lightgreen"
+    });
+    if (currentDifficulty === 1) {    // if the current level is 'MEDIUM' then the timer should be set to 3 minutes
+      $("#timerText").text("03:00");
+      startTimer(180, $("#timerText"));
+    } else {    // if the current level is 'HARD' then the timer should be set to 1 minute 30 seconds
+      $("#timerText").text("01:30");
+      startTimer(90, $("#timerText"));
+    }
   }
-  if (highestDifficultyCompleted < 1) {
+  if (highestDifficultyCompleted < 1) {   // if the highest level completed is 'EASY' then the 'HARD' level button will be locked until 'MEDIUM' is beaten
     $(".levelHard").addClass("lockedLevel");
   } else {
     $(".levelHard").removeClass("lockedLevel");
   }
-  const duplicatedImageArray = duplicateArray(imageArrays[currentDifficulty]);
-  shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);
-  createMultipleCardElements();
-  $(".scene").on("click", ".card", handleCardClick);
-  $(".gameInstructions").click(function() {
-    $(".instructionModal").addClass("showModal");
-  })
-  $(".closeInstructionModal").click(closeModal);
-  $(".startGame").click(closeModal);
-  $(".startGame").click(initializeAudio);
-  $(".musicButton").click(toggleAudio);
-  $(".tryAgain").click(changeMusic);
 }
+
+
+
 
 function duplicateArray(someArray) {
   return someArray.reduce(function(res, current) {
