@@ -177,6 +177,20 @@ function clearClickedCardsImageURLs() {
   secondCardClickedImageURL = null;
 }
 
+// Close Modals //
+function closeModal() {
+  $(".modal").removeClass("showModal");
+}
+
+// Reset Game //
+function resetGame() {
+  resetStats();
+  $(".image").removeClass("isFlipped");
+  $(".cardsContainer").empty();
+  clearInterval(intervalID);
+  initiateApp();
+}
+
 // Card Click Handler Function //
 function handleCardClick(event) {
   if ($(event.currentTarget).hasClass("isFlipped") || twoCardsClicked) {
@@ -306,23 +320,6 @@ function resetStats() {
 }
 
 
-
-
-function showModal() {
-  $(".modal").addClass("showModal");
-}
-
-function closeModal() {
-  $(".modal").removeClass("showModal");
-}
-
-function resetGame() {
-  resetStats();
-  $(".image").removeClass("isFlipped");
-  $(".cardsContainer").empty();
-  clearInterval(intervalID);
-  initiateApp();
-}
 
 function startTimer(duration, display) {
   $("#timerText").removeClass("flash");
