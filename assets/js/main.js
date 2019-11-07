@@ -253,8 +253,14 @@ function startTimer(duration, display) {
   intervalID = setInterval(function() {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
-    if (minutes === 0 && seconds <= 10) {
-      $("#timerText").css("color", "#FF0000");
+    if (minutes === 0 && seconds <= 45) {
+      $("#timerText").css("color", "#ffff00");
+    }
+    if (minutes === 0 && seconds <= 30) {
+      $("#timerText").css("color", "#ffa500");
+    }
+    if (minutes === 0 && seconds <= 20) {
+      $("#timerText").css("color", "#ff0000");
     }
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
