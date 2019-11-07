@@ -270,9 +270,16 @@ function closeWinModalAndReset() {
   });
 }
 
+////////////////////////////////////////
+////////  STATISTICS FUNCTIONS  ////////
+////////////////////////////////////////
 
+// Calculate Card Matching Accuracy //
+function calculateAccuracy(){
+  return Math.round( (cardMatches / matchAttempts) * 100 );
+}
 
-
+// Display Statistics //
 function displayStats() {
   accuracy = calculateAccuracy();
   if (gamesPlayed) {
@@ -290,6 +297,7 @@ function displayStats() {
   }
 }
 
+// Reset Statistics //
 function resetStats() {
   cardMatches = null;
   matchAttempts = null;
@@ -297,9 +305,8 @@ function resetStats() {
   displayStats();
 }
 
-function calculateAccuracy(){
-  return Math.round( (cardMatches / matchAttempts) * 100 );
-}
+
+
 
 function showModal() {
   $(".modal").addClass("showModal");
