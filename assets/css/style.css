@@ -1,53 +1,42 @@
+/*//////////////////////
+////////  MAIN  ////////
+//////////////////////*/
+
 body {
-  flex-direction: row;
   height: 100vh;
   width: 100vw;
-  background-color: lightskyblue;
-  border: 1px solid black;
+  background-color: rgb(107, 123, 148);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
-.asideOne, .asideTwo, .asideOneItems, .asideTwoItems {
-  /* background-color: white; */
-  border: 1px solid black;
-  box-sizing: border-box;
-}
-.asideOne, .asideTwo {
+.asideOne, .asideTwo, .asideOneItems, .asideTwoItems, .statsContent, .difficultyContent, .musicContent, .statsTextTitle, .statsText {
   display: flex;
   justify-content: space-evenly;
+}
+.asideOne, .asideTwo {
   flex-direction: column;
   width: 25%;
   height: 99vh;
 }
 .asideOneItems, .asideTwoItems {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  /* background-color: lightcoral; */
   flex-direction: column;
   width: 100%;
-  height: 24vmin;
+  height: 24.5vmin;
 }
 .statsContent, .difficultyContent, .musicContent {
-  display: flex;
-  justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  /* background-color: lightgreen; */
-  border: 1px solid black;
+  border: 0.2rem solid black;
   box-sizing: border-box;
-  height: 49%;
+  height: 49.5%;
   width: 100%;
   font-size: 10vmin;
 }
 .statsTextTitle, .statsText {
-  display: flex;
-  justify-content: space-evenly;
   align-items: center;
 }
 #bannerContainer {
@@ -61,8 +50,32 @@ body {
 .statsTextTitle, .statsText, .difficultyLevel, .musicPlayer, .winMessage, .preGameMessage, .gameOverMessage, p {
   font-family: "Cute Font", cursive;
 }
+.hidden {
+  display: none;
+}
+#difficultyTitle, .musicContent, #gameCountTitle, #matchAttemptsTitle, #matchAccuracyTitle, #extrasTitle {
+  background-color: lightsteelblue;
+}
+#difficultyContainer, #gameCountContainer, #matchAttemptsContainer, #matchAccuracyContainer {
+  color: lightgreen;
+  background-color: black;
+}
+.flash {
+  animation-name: flash;
+   animation-duration: 0.2s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+   animation-play-state: running;
+}
+@keyframes flash {
+   from {color: red;}
+   to {color: white;}
+}
+
+/* CARDS */
 main {
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(76, 86, 102);
   border: 1px solid black;
   box-sizing: border-box;
   width: 99vh;
@@ -122,9 +135,8 @@ main {
 .card.isFlipped {
   transform: rotateY(180deg);
 }
-.hidden {
-  display: none;
-}
+
+/* MODALS */
 .modal {
   position: fixed;
   left: 0;
@@ -150,13 +162,21 @@ main {
   width: 80vh;
   height: 80vh;
 }
-p, .winMessage, .preGameMessage, .gameOverMessage {
+.showModal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.winMessage, .preGameMessage, .gameOverMessage, .instructionText, p {
   font-size: 8vmin;
   margin: 0;
 }
 .lockedLevelText>p {
   font-size: 15vmin;
 }
+
+/* BUTTONS */
 .startGame, .resetGame, .closeInstructionModal, .musicButton, .gameInstructions {
   border-radius: 10px;
   background-color: whitesmoke;
@@ -170,7 +190,7 @@ p, .winMessage, .preGameMessage, .gameOverMessage {
   padding: 1vmin;
   margin: 1vmin;
   width: 100%;
-  height: 100%;
+  height: 90%;
 }
 .closeInstructionModal {
   font-size: 5vmin;
@@ -184,54 +204,20 @@ p, .winMessage, .preGameMessage, .gameOverMessage {
   width: 60%;
   margin: 2vmin;
 }
-.showModal {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1.0);
-  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}
 .lockedLevel {
   background-color: darkgray;
   border: 0.5vmin solid gray;
   color: gray;
 }
-#difficultyTitle, 
-.musicContent, 
-#gameCountTitle, 
-#matchAttemptsTitle, 
-#matchAccuracyTitle, 
-#extrasTitle {
-  background-color: lightsteelblue;
-}
-#difficultyContainer, 
-#gameCountContainer, 
-#matchAttemptsContainer, 
-#matchAccuracyContainer {
-  color: lightgreen;
-  background-color: black;
-}
-.flash {
-  animation-name: flash;
-   animation-duration: 0.2s;
-   animation-timing-function: linear;
-   animation-iteration-count: infinite;
-   animation-direction: alternate;
-   animation-play-state: running;
-}
-@keyframes flash {
-   from {color: red;}
-   to {color: white;}
+.musicButton {
+  width: 70%;
 }
 
 
-/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-RESPONSIVE 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
+/*////////////////////////////
+////////  RESPONSIVE  ////////
+////////////////////////////*/
 
 /* iPad - LANDSCAPE - 3/4/Pro-9.7" */
 @media only screen 
