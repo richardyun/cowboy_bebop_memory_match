@@ -251,24 +251,28 @@ function gameWinConditionCheck() {
 // Select Level from Win Modal //
 function postWinLevelSelection() {
   $(".resetGame").click(function(event) {
-    if ($(event.target).hasClass("levelEasy")) {
+    if ($(event.target).hasClass("levelEasy")) {    // set level to 'EASY' and restart game if 'EASY' button is clicked
       currentDifficulty = 0;
+      changeMusic();
+      resetGame();
     }
-    if ($(event.target).hasClass("levelMedium")) {
+    if ($(event.target).hasClass("levelMedium")) {    // set level to 'MEDIUM' and restart game if 'MEDIUM' button is clicked
       currentDifficulty = 1;
+      changeMusic();
+      resetGame();
     }
-    if ($(event.target).hasClass("levelHard")) {
+    if ($(event.target).hasClass("levelHard")) {    // if 'HARD' button is clicked...
       if ($(".levelHard").hasClass("lockedLevel")) {    // show locked level modal if level 'HARD' is locked
         $(".lockedLevelModal").addClass("showModal");
         setTimeout(function() {   // remove locked level modal after 3.5 seconds
           $(".lockedLevelModal").removeClass("showModal");
         }, 3500);
       } else {
-      currentDifficulty = 2;
+      currentDifficulty = 2;    // if 'HARD' level is not locked restart game and set level to 'HARD'
+      changeMusic();
+      resetGame();
       }
     }
-    changeMusic();
-    resetGame();
   });
 }
 
