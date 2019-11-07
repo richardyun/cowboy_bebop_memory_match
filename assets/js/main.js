@@ -125,18 +125,19 @@ function initiateApp() {
   } else {
     $(".levelHard").removeClass("lockedLevel");
   }
+
 }
 
 
+//////// CARD GENERATION FUNCTIONS ////////
 
-
-function duplicateArray(someArray) {
+function duplicateArray(someArray) {    // takes an array and duplicates the array's elements so that array now has two of each of its contents
   return someArray.reduce(function(res, current) {
     return res.concat([current, current]);
   }, []);
 }
 
-function shuffleArray(someArray) {
+function shuffleArray(someArray) {    // takes an array and randomly arranges its contents in a different order
   for (let i = someArray.length - 1; i > 0; i--) {
     let k = Math.floor(Math.random() * (i + 1));
     [someArray[i], someArray[k]] = [someArray[k], someArray[i]];
@@ -144,7 +145,7 @@ function shuffleArray(someArray) {
   return someArray;
 }
 
-function generateSingleCardElements(imageURL) {
+function generateSingleCardElements(imageURL) {   // uses an image to create a card element with a front (animation) and back (image) face
   const cardDivs = $("<div class='card'>")
     .append("<div class='image cardFace' style='background-image: url(assets/images/smiley_edit.png)'>")
     .append("<div class='image cardFaceBackground'>")
@@ -153,9 +154,12 @@ function generateSingleCardElements(imageURL) {
   $(".cardsContainer").append(animationScene);
 }
 
-function createMultipleCardElements() {
+function createMultipleCardElements() {   // utilizes map function to create single card elements for all the images in the shuffled-duplicated image array
   shuffledDuplicatedImageArray.map(imageURL => generateSingleCardElements(imageURL));
 }
+
+
+
 
 function handleCardClick(event) {
   if ($(event.currentTarget).hasClass("isFlipped") || twoCardsClicked) {
