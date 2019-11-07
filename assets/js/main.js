@@ -1,5 +1,9 @@
 $(document).ready(initiateApp);
 
+
+//////// CONSTANTS AND VARIABLES ////////
+
+// Card Generation //
 const imageArrays = [
   [
     'assets/images/edward.jpg',
@@ -31,27 +35,40 @@ const imageArrays = [
   ]
 ];
 let shuffledDuplicatedImageArray = [];
+
+// Game Mechanics //
 let firstCardClicked = null;
 let secondCardClicked = null;
 let firstCardClickedImageURL = null;
 let secondCardClickedImageURL = null;
 let twoCardsClicked = false;
+
+// Statistics //
 let cardMatches = null;
 let matchAttempts = null;
 let gamesPlayed = null;
 let accuracy = null;
+
+// Levels //
 let difficultyLevel = ['Easy', 'Medium', 'Hard'];
 let currentDifficulty = 0;
 let highestDifficultyCompleted = 0;
+
+// Timer //
 let intervalID = null;
+
+// Win Condition //
 const maxCardMatches = imageArrays[currentDifficulty].length;
+
+// Music //
+let gameMusic = null;
+let isMusicPlaying = false;
 const musicArray = [
   'assets/audio/cowboy_bebop_bell_peppers_&_beef_kendall_x_mukashi.mp3',
   'assets/audio/cowboy_bebop_chicken_bone_ost3_blue_CUT.mp3',
   'assets/audio/cowboy_bebop_tank!_op.mp3'
 ];
-let gameMusic = null;
-let isMusicPlaying = false;
+
 
 
 function initiateApp() {
