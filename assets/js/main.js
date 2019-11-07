@@ -282,6 +282,7 @@ function closeWinModalAndReset() {
     if ($(event.target).hasClass("winModal") || $(event.target).hasClass("resetGame")) {
       if (!$(".lockedLevelModal").hasClass("showModal")) {
         closeModal();
+        changeMusic();
         resetGame();                
       }
     }
