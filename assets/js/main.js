@@ -248,6 +248,7 @@ function resetGame() {
 }
 
 function startTimer(duration, display) {
+  $("#timerText").removeClass("flash");
   $("#timerText").css("color", "lightgreen");
   let timer = duration, minutes, seconds;
   intervalID = setInterval(function() {
@@ -261,6 +262,9 @@ function startTimer(duration, display) {
     }
     if (minutes === 0 && seconds <= 20) {
       $("#timerText").css("color", "#ff0000");
+    }
+    if (minutes === 0 && seconds <= 10) {
+      $("#timerText").addClass("flash");
     }
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
