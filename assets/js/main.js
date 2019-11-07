@@ -47,7 +47,7 @@ let intervalID = null;
 const maxCardMatches = imageArrays[currentDifficulty].length;
 const musicArray = [
   'assets/audio/cowboy_bebop_bell_peppers_&_beef_kendall_x_mukashi.mp3',
-  'assets/audio/cowboy_bebop_chicken_bone_ost3_blue.mp3',
+  'assets/audio/cowboy_bebop_chicken_bone_ost3_blue_CUT.mp3',
   'assets/audio/cowboy_bebop_tank!_op.mp3'
 ];
 let gameMusic = null;
