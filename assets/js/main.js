@@ -2,8 +2,9 @@
 
 $(document).ready(initiateApp);
 
-
-//////// CONSTANTS AND VARIABLES ////////
+///////////////////////////////////////////
+////////  CONSTANTS AND VARIABLES  ////////
+///////////////////////////////////////////
 
 // Card Generation //
 const imageArrays = [
@@ -71,8 +72,9 @@ const musicArray = [
   'assets/audio/cowboy_bebop_tank!_op.mp3'
 ];
 
-
-//////// INITIATE APP FUNCTION ////////
+/////////////////////////////////////////
+////////  INITIATE APP FUNCTION  ////////
+/////////////////////////////////////////
 
 function initiateApp() {
 
@@ -128,8 +130,9 @@ function initiateApp() {
 
 }
 
-
-//////// CARD GENERATION FUNCTIONS ////////
+/////////////////////////////////////////////
+////////  CARD GENERATION FUNCTIONS  ////////
+/////////////////////////////////////////////
 
 function duplicateArray(someArray) {    // takes an array and duplicates the array's elements so that array now has two of each of its contents
   return someArray.reduce(function(res, current) {
@@ -158,8 +161,9 @@ function createMultipleCardElements() {   // utilizes map function to create sin
   shuffledDuplicatedImageArray.map(imageURL => generateSingleCardElements(imageURL));
 }
 
-
-//////// GAME MECHANICS FUNCTIONS ////////
+////////////////////////////////////////////
+////////  GAME MECHANICS FUNCTIONS  ////////
+////////////////////////////////////////////
 
 // Card Click Handler Function //
 function handleCardClick(event) {
@@ -174,66 +178,91 @@ function handleCardClick(event) {
     secondCardClickedImageURL = event.currentTarget.children[2].style.backgroundImage;    // image url of the second clicked card
     twoCardsClicked = true;
     if (firstCardClickedImageURL !== secondCardClickedImageURL) {   // actions to take if the two clicked cards don't match
-      matchAttempts++;
-      setTimeout(function() {   // resetting after card mismatch (delay)
-        twoCardsClicked = false;
-        firstCardClicked.removeClass("isFlipped");
-        secondCardClicked.removeClass("isFlipped");
-        firstCardClicked = null;
-        secondCardClicked = null;
-        firstCardClickedImageURL = null;
-        secondCardClickedImageURL = null;
-      }, 1500);
+      misMatchedCardsAction();
     } else {    // actions to take if the two clicked cards match
-      twoCardsClicked = false;
-      matchAttempts++;
-      cardMatches++;
-        // if (cardMatches === maxCardMatches) {
-        if (cardMatches === 1) {    // win condition
-          gamesPlayed++;
-          fadeMusic();
-          setTimeout(function() {
-            $(".winModal").addClass("showModal");
-            clearInterval(intervalID);
-          }, 500);
-          $(".resetGame").click(function(event){    // level selection post-win
-            if ($(event.target).hasClass("levelEasy")) {
-              currentDifficulty = 0;
-              changeMusic();
-              resetGame();
-            }
-            if ($(event.target).hasClass("levelMedium")) {
-              currentDifficulty = 1;
-              changeMusic();
-              resetGame();
-            }
-            if ($(event.target).hasClass("levelHard")) {
-              if ($(".levelHard").hasClass("lockedLevel")) {
-                $(".lockedLevelModal").addClass("showModal");
-                setTimeout(function() {
-                  $(".lockedLevelModal").removeClass("showModal");
-                }, 3500);
-              } else {
-              currentDifficulty = 2;
-              changeMusic();
-              resetGame();
-              }
-            }
-          });
-          $(document).click(function(event) {
-            if ($(event.target).hasClass("winModal") || $(event.target).hasClass("resetGame")) {
-              if (!$(".lockedLevelModal").hasClass("showModal")) {
-                closeModal();
-                resetGame();                
-              }
-            }
-          });
-        }
-      firstCardClicked = null;
-      secondCardClicked = null;
+      matchedCardsAction();
     }
   }
-  displayStats();
+  displayStats();   // calculate and show stats
+}
+
+// Actions When Cards Do Not Match //
+function misMatchedCardsAction() {
+  matchAttempts++;
+  setTimeout(function() {   // resetting after card mismatch (delay)
+    twoCardsClicked = false;
+    firstCardClicked.removeClass("isFlipped");
+    secondCardClicked.removeClass("isFlipped");
+    firstCardClicked = null;
+    secondCardClicked = null;
+    firstCardClickedImageURL = null;
+    secondCardClickedImageURL = null;
+  }, 1500);
+}
+
+// Actions When Cards Match //
+function matchedCardsAction() {
+  twoCardsClicked = false;
+  matchAttempts++;
+  cardMatches++;
+  gameWinConditionCheck();
+  firstCardClicked = null;
+  secondCardClicked = null;
+}
+
+// Check Win Condition //
+function gameWinConditionCheck() {
+  // if (cardMatches === maxCardMatches) {
+  if (cardMatches === 1) {
+    gamesPlayed++;
+    fadeMusic();
+    setTimeout(function() {   // show the win modal (delay)
+      $(".winModal").addClass("showModal");
+      clearInterval(intervalID);    // remove timer (if applicable)
+    }, 500);
+    postWinLevelSelection();
+    closeWinModalAndReset();
+  }
+}
+
+// Select Level from Win Modal //
+function postWinLevelSelection() {
+  $(".resetGame").click(function(event) {
+    if ($(event.target).hasClass("levelEasy")) {
+      currentDifficulty = 0;
+      changeMusic();
+      resetGame();
+    }
+    if ($(event.target).hasClass("levelMedium")) {
+      currentDifficulty = 1;
+      changeMusic();
+      resetGame();
+    }
+    if ($(event.target).hasClass("levelHard")) {
+      if ($(".levelHard").hasClass("lockedLevel")) {    // show locked level modal if level 'HARD' is locked
+        $(".lockedLevelModal").addClass("showModal");
+        setTimeout(function() {   // remove locked level modal after 3.5 seconds
+          $(".lockedLevelModal").removeClass("showModal");
+        }, 3500);
+      } else {
+      currentDifficulty = 2;
+      changeMusic();
+      resetGame();
+      }
+    }
+  });
+}
+
+// Handle Closing Win Modal and Game Reset //
+function closeWinModalAndReset() {
+  $(document).click(function(event) {
+    if ($(event.target).hasClass("winModal") || $(event.target).hasClass("resetGame")) {
+      if (!$(".lockedLevelModal").hasClass("showModal")) {
+        closeModal();
+        resetGame();                
+      }
+    }
+  });
 }
 
 
