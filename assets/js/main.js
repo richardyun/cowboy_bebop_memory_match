@@ -159,22 +159,23 @@ function createMultipleCardElements() {   // utilizes map function to create sin
 }
 
 
+//////// GAME MECHANICS FUNCTIONS ////////
 
-
+// Card Click Handler Function //
 function handleCardClick(event) {
   if ($(event.currentTarget).hasClass("isFlipped") || twoCardsClicked) {
-    return;
+    return;   // if a card is already flipped or there are two cards already clicked then clicks will be temporarily disabled
   }
   if (firstCardClicked === null) {
     firstCardClicked = $(event.currentTarget).addClass("isFlipped");
-    firstCardClickedImageURL = event.currentTarget.children[2].style.backgroundImage;
+    firstCardClickedImageURL = event.currentTarget.children[2].style.backgroundImage;   // image url of the first clicked card
   } else {
     secondCardClicked = $(event.currentTarget).addClass("isFlipped");
-    secondCardClickedImageURL = event.currentTarget.children[2].style.backgroundImage;
+    secondCardClickedImageURL = event.currentTarget.children[2].style.backgroundImage;    // image url of the second clicked card
     twoCardsClicked = true;
-    if (firstCardClickedImageURL !== secondCardClickedImageURL) {
+    if (firstCardClickedImageURL !== secondCardClickedImageURL) {   // actions to take if the two clicked cards don't match
       matchAttempts++;
-      setTimeout(function() {
+      setTimeout(function() {   // resetting after card mismatch (delay)
         twoCardsClicked = false;
         firstCardClicked.removeClass("isFlipped");
         secondCardClicked.removeClass("isFlipped");
@@ -183,19 +184,19 @@ function handleCardClick(event) {
         firstCardClickedImageURL = null;
         secondCardClickedImageURL = null;
       }, 1500);
-    } else {
+    } else {    // actions to take if the two clicked cards match
       twoCardsClicked = false;
       matchAttempts++;
       cardMatches++;
         // if (cardMatches === maxCardMatches) {
-        if (cardMatches === 1) {
+        if (cardMatches === 1) {    // win condition
           gamesPlayed++;
           fadeMusic();
           setTimeout(function() {
             $(".winModal").addClass("showModal");
             clearInterval(intervalID);
           }, 500);
-          $(".resetGame").click(function(event){
+          $(".resetGame").click(function(event){    // level selection post-win
             if ($(event.target).hasClass("levelEasy")) {
               currentDifficulty = 0;
               changeMusic();
@@ -234,6 +235,9 @@ function handleCardClick(event) {
   }
   displayStats();
 }
+
+
+
 
 function displayStats() {
   accuracy = calculateAccuracy();
