@@ -87,11 +87,14 @@ function initiateApp() {
   $(".scene").on("click", ".card", handleCardClick);    // card
   $(".gameInstructions").click(function() {   // 'INSTRUCTIONS' button
     $(".instructionModal").addClass("showModal");
-  })
+  });
   $(".closeInstructionModal").click(closeModal);    // game instruction modal's 'CLOSE' button
   $(".startGame").click(closeModal).click(initializeAudio);    // pre-game modal 'PLAY' button
   $(".musicButton").click(toggleAudio);   // play-pause music button
   $(".tryAgain").click(changeMusic);    // 'TRY AGAIN' button after game over modal from timer run-out
+  $(".closeFinalModal").click(function() {    // 'BACK TO GAME' button in the final win modal
+    $(".finalModal").removeClass("showModal");
+  });
 
   ////  Game Difficulty  ////
   if (currentDifficulty > highestDifficultyCompleted) {   // keeps track of the highest level difficulty played
@@ -246,6 +249,11 @@ function gameWinConditionCheck() {
     playGameEndSoundEffect();
     setTimeout(function() {   // show the win modal (delay)
       $(".winModal").addClass("showModal");
+      if (currentDifficulty === 2) {    // if the highest level is beaten then shortly after the win modal, display the final modal
+        setTimeout(function() {
+          $(".finalModal").addClass("showModal");
+        }, 500);
+      }
       clearInterval(intervalID);    // remove timer (if applicable)
     }, 500);
     postWinLevelSelection();
