@@ -6,7 +6,7 @@ $(document).ready(initiateApp);
 ////////  CONSTANTS AND VARIABLES  ////////
 ///////////////////////////////////////////
 
-// Card Generation //
+////  Card Generation  ////
 const imageArrays = [
   [
     'assets/images/edward.jpg',
@@ -39,31 +39,31 @@ const imageArrays = [
 ];
 let shuffledDuplicatedImageArray = [];
 
-// Game Mechanics //
+////  Game Mechanics  ////
 let firstCardClicked = null;
 let secondCardClicked = null;
 let firstCardClickedImageURL = null;
 let secondCardClickedImageURL = null;
 let twoCardsClicked = false;
 
-// Statistics //
+////  Statistics  ////
 let cardMatches = null;
 let matchAttempts = null;
 let gamesPlayed = null;
 let accuracy = null;
 
-// Levels //
+////  Levels  ////
 let difficultyLevel = ['Easy', 'Medium', 'Hard'];
 let currentDifficulty = 0;
 let highestDifficultyCompleted = 0;
 
-// Timer //
+////  Timer  ////
 let intervalID = null;
 
-// Win Condition //
+////  Win Condition  ////
 const maxCardMatches = imageArrays[currentDifficulty].length;
 
-// Music //
+////  Music  ////
 let gameMusic = null;
 let isMusicPlaying = false;
 const musicArray = [
@@ -78,12 +78,12 @@ const musicArray = [
 
 function initiateApp() {
 
-  // Card Generation //
+  ////  Card Generation  ////
   const duplicatedImageArray = duplicateArray(imageArrays[currentDifficulty]);    // use the duplicateArray function to make doubles of the images (selects images depending on difficulty level)
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);    // use the shuffleArray function to randomly arrange the newly duplicated images
   createMultipleCardElements();   // use the createMultipleCardElements function to generate card elements using the array of duplicated, shuffled images
 
-  // Click Handlers //
+  ////  Click Handlers  ////
   $(".scene").on("click", ".card", handleCardClick);    // card
   $(".gameInstructions").click(function() {   // 'INSTRUCTIONS' button
     $(".instructionModal").addClass("showModal");
@@ -93,7 +93,7 @@ function initiateApp() {
   $(".musicButton").click(toggleAudio);   // play-pause music button
   $(".tryAgain").click(changeMusic);    // 'TRY AGAIN' button after game over modal from timer run-out
 
-  // Game Difficulty //
+  ////  Game Difficulty  ////
   if (currentDifficulty > highestDifficultyCompleted) {   // keeps track of the highest level difficulty played
     highestDifficultyCompleted = currentDifficulty;
   }
@@ -134,12 +134,14 @@ function initiateApp() {
 ////////  CARD GENERATION FUNCTIONS  ////////
 /////////////////////////////////////////////
 
+////  Array Duplicator  ////
 function duplicateArray(someArray) {    // takes an array and duplicates the array's elements so that array now has two of each of its contents
   return someArray.reduce(function(res, current) {
     return res.concat([current, current]);
   }, []);
 }
 
+////  Array Shuffler-Randomizer  ////
 function shuffleArray(someArray) {    // takes an array and randomly arranges its contents in a different order
   for (let i = someArray.length - 1; i > 0; i--) {
     let k = Math.floor(Math.random() * (i + 1));
@@ -148,6 +150,7 @@ function shuffleArray(someArray) {    // takes an array and randomly arranges it
   return someArray;
 }
 
+////  Single Card Builder Function  ////
 function generateSingleCardElements(imageURL) {   // uses an image to create a card element with a front (animation) and back (image) face
   const cardDivs = $("<div class='card'>")
     .append("<div class='image cardFace' style='background-image: url(assets/images/smiley_edit.png)'>")
@@ -157,6 +160,7 @@ function generateSingleCardElements(imageURL) {   // uses an image to create a c
   $(".cardsContainer").append(animationScene);
 }
 
+////  Mass-Card Generator Function  ////
 function createMultipleCardElements() {   // utilizes map function to create single card elements for all the images in the shuffled-duplicated image array
   shuffledDuplicatedImageArray.map(imageURL => generateSingleCardElements(imageURL));
 }
@@ -165,24 +169,24 @@ function createMultipleCardElements() {   // utilizes map function to create sin
 ////////  GAME MECHANICS FUNCTIONS  ////////
 ////////////////////////////////////////////
 
-// Clear Card Clicked Variables //
+////  Clear Card Clicked Variables  ////
 function clearCardsClicked() {
   firstCardClicked = null;
   secondCardClicked = null;
 }
 
-// Clear Clicked Cards Image URLs //
+////  Clear Clicked Cards Image URLs  ////
 function clearClickedCardsImageURLs() {
   firstCardClickedImageURL = null;
   secondCardClickedImageURL = null;
 }
 
-// Close Modals //
+////  Close Modals  ////
 function closeModal() {
   $(".modal").removeClass("showModal");
 }
 
-// Reset Game //
+////  Reset Game  ////
 function resetGame() {
   resetStats();
   $(".image").removeClass("isFlipped");
@@ -191,7 +195,7 @@ function resetGame() {
   initiateApp();
 }
 
-// Card Click Handler Function //
+////  Card Click Handler Function  ////
 function handleCardClick(event) {
   if ($(event.currentTarget).hasClass("isFlipped") || twoCardsClicked) {
     return;   // if a card is already flipped or there are two cards already clicked then clicks will be temporarily disabled
@@ -212,7 +216,7 @@ function handleCardClick(event) {
   displayStats();   // calculate and show stats
 }
 
-// Actions When Cards Do Not Match //
+////  Actions When Cards Do Not Match  ////
 function misMatchedCardsAction() {
   matchAttempts++;
   setTimeout(function() {   // resetting after card mismatch (delay)
@@ -224,7 +228,7 @@ function misMatchedCardsAction() {
   }, 1500);
 }
 
-// Actions When Cards Match //
+////  Actions When Cards Match  ////
 function matchedCardsAction() {
   twoCardsClicked = false;
   matchAttempts++;
@@ -233,7 +237,7 @@ function matchedCardsAction() {
   clearCardsClicked();
 }
 
-// Check Win Condition //
+////  Check Win Condition  ////
 function gameWinConditionCheck() {
   // if (cardMatches === maxCardMatches) {
   if (cardMatches === 1) {
@@ -248,7 +252,7 @@ function gameWinConditionCheck() {
   }
 }
 
-// Select Level from Win Modal //
+////  Select Level from Win Modal  ////
 function postWinLevelSelection() {
   $(".resetGame").click(function(event) {
     if ($(event.target).hasClass("levelEasy")) {    // set level to 'EASY' and restart game if 'EASY' button is clicked
@@ -276,7 +280,7 @@ function postWinLevelSelection() {
   });
 }
 
-// Handle Closing Win Modal and Game Reset //
+////  Handle Closing Win Modal and Game Reset  ////
 function closeWinModalAndReset() {
   $(document).click(function(event) {
     if ($(event.target).hasClass("winModal") || $(event.target).hasClass("resetGame")) {
@@ -293,12 +297,12 @@ function closeWinModalAndReset() {
 ////////  STATISTICS FUNCTIONS  ////////
 ////////////////////////////////////////
 
-// Calculate Card Matching Accuracy //
+////  Calculate Card Matching Accuracy  ////
 function calculateAccuracy(){
   return Math.round( (cardMatches / matchAttempts) * 100 );
 }
 
-// Display Statistics //
+////  Display Statistics  ////
 function displayStats() {
   accuracy = calculateAccuracy();
   if (gamesPlayed) {
@@ -316,7 +320,7 @@ function displayStats() {
   }
 }
 
-// Reset Statistics //
+////  Reset Statistics  ////
 function resetStats() {
   cardMatches = null;
   matchAttempts = null;
@@ -349,7 +353,7 @@ function startTimer(duration, display) {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.text(minutes + ":" + seconds);
-    if (--timer < 0) {    // ending procedure of the timer
+    if (--timer < 0) {    // actions to take if timer runs out
       gamesPlayed++;
       fadeMusic();
       $(".gameOverModal").addClass("showModal");
@@ -362,7 +366,7 @@ function startTimer(duration, display) {
 ////////  MUSIC FUNCTIONS  ////////
 ///////////////////////////////////
 
-// Starting Game Music Play //
+////  Starting Game Music Play  ////
 function initializeAudio() {
   gameMusic = new Audio('assets/audio/cowboy_bebop_bell_peppers_&_beef_kendall_x_mukashi.mp3');
   gameMusic.loop = true;
@@ -379,7 +383,7 @@ function initializeAudio() {
   }
 }
 
-// Changing Level Difficulty Changes Music Track //
+////  Changing Level Difficulty Changes Music Track  ////
 function changeMusic() {
   if (currentDifficulty === 0) {    // only the 'EASY' level allows looping of the music track
     gameMusic.loop = true;
@@ -401,7 +405,7 @@ function changeMusic() {
   }
 }
 
-// Pause or Play Music //
+////  Pause or Play Music  ////
 function toggleAudio() {
   if (isMusicPlaying) {
     gameMusic.pause();
@@ -412,7 +416,7 @@ function toggleAudio() {
   }
 }
 
-// Fade Music Out Upon Game End //
+////  Fade Music Out Upon Game End  ////
 function fadeMusic() {
   let vol = 0.20;
   const interval = 100;
