@@ -350,6 +350,7 @@ function startTimer(duration, display) {
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.text(minutes + ":" + seconds);
     if (--timer < 0) {    // ending procedure of the timer
+      gamesPlayed++;
       fadeMusic();
       $(".gameOverModal").addClass("showModal");
       clearInterval(intervalID);
