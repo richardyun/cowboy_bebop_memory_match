@@ -193,6 +193,7 @@ function resetGame() {
   $(".cardsContainer").empty();
   clearInterval(intervalID);
   initiateApp();
+  changeMusic();
 }
 
 ////  Card Click Handler Function  ////
@@ -257,12 +258,12 @@ function postWinLevelSelection() {
   $(".resetGame").click(function(event) {
     if ($(event.target).hasClass("levelEasy")) {    // set level to 'EASY' and restart game if 'EASY' button is clicked
       currentDifficulty = 0;
-      changeMusic();
+      // changeMusic();
       resetGame();
     }
     if ($(event.target).hasClass("levelMedium")) {    // set level to 'MEDIUM' and restart game if 'MEDIUM' button is clicked
       currentDifficulty = 1;
-      changeMusic();
+      // changeMusic();
       resetGame();
     }
     if ($(event.target).hasClass("levelHard")) {    // if 'HARD' button is clicked...
@@ -273,7 +274,7 @@ function postWinLevelSelection() {
         }, 3500);
       } else {
       currentDifficulty = 2;    // if 'HARD' level is not locked restart game and set level to 'HARD'
-      changeMusic();
+      // changeMusic();
       resetGame();
       }
     }
@@ -283,10 +284,10 @@ function postWinLevelSelection() {
 ////  Handle Closing Win Modal and Game Reset  ////
 function closeWinModalAndReset() {
   $(document).click(function(event) {
-    if ($(event.target).hasClass("winModal") || $(event.target).hasClass("resetGame")) {
+    if ($(event.target).hasClass("resetGame")) {
       if (!$(".lockedLevelModal").hasClass("showModal")) {
         closeModal();
-        changeMusic();
+        // changeMusic();
         resetGame();                
       }
     }
