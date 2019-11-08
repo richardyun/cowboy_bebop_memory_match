@@ -391,12 +391,12 @@ main {
   .asideOne, .asideTwo {
     flex-direction: column;
     width: 21%;
-    height: 99vh;
+    height: 99.5vh;
   }
   .asideOneItems, .asideTwoItems {
     flex-direction: column;
-    width: 100%;
-    height: 24vmin;
+    width: 99%;
+    height: 25vmin;
   }
   .statsContent, .difficultyContent, .musicContent {
     height: 49%;
@@ -425,7 +425,7 @@ main {
   .musicButton, .gameInstructions {
     font-size: 6vmin;
     width: 100%;
-    height: 100%;
+    height: 90%;
   }
 }
 
