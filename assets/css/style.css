@@ -80,6 +80,7 @@ main {
   box-sizing: border-box;
   width: 99vh;
   height: 99vh;
+  margin: .1rem;
 }
 .cardsContainer {
   height: 100%;
