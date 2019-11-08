@@ -63,7 +63,7 @@ let intervalID = null;
 ////  Win Condition  ////
 const maxCardMatches = imageArrays[currentDifficulty].length;
 
-////  Music  ////
+////  Audio  ////
 let gameMusic = null;
 let isMusicPlaying = false;
 const musicArray = [
@@ -243,6 +243,7 @@ function gameWinConditionCheck() {
   if (cardMatches === 1) {
     gamesPlayed++;
     fadeMusic();
+    playGameEndSoundEffect();
     setTimeout(function() {   // show the win modal (delay)
       $(".winModal").addClass("showModal");
       clearInterval(intervalID);    // remove timer (if applicable)
@@ -358,12 +359,13 @@ function startTimer(duration, display) {
       fadeMusic();
       $(".gameOverModal").addClass("showModal");
       clearInterval(intervalID);
+      playGameEndSoundEffect();
     }
   }, 1000);
 }
 
 ///////////////////////////////////
-////////  MUSIC FUNCTIONS  ////////
+////////  AUDIO FUNCTIONS  ////////
 ///////////////////////////////////
 
 ////  Starting Game Music Play  ////
@@ -377,7 +379,7 @@ function initializeAudio() {
       gameMusic.play();
       isMusicPlaying = true;
     }).catch(error => {
-      console.log("Audio autoplay prevented.", error);
+      console.log("Audio play prevented.", error);
       isMusicPlaying = false;
     });    
   }
@@ -431,4 +433,21 @@ function fadeMusic() {
         isMusicPlaying = false;
       }
     }, interval); 
+}
+
+////  Sound Effect Play Function  ////
+function playGameEndSoundEffect() {
+  // if the game-over modal is showing set the sound effect url to the game_over mp3, otherwise set it to the game_win mp3
+  let soundEffectURL = $(".gameOverModal").hasClass("showModal") ? '/assets/audio/game_over_sfx.mp3' : '/assets/audio/game_win_sfx.mp3';
+  const gameSoundEffect = new Audio(soundEffectURL);
+  gameSoundEffect.loop = false;
+  gameSoundEffect.volume = 0.2;
+  const playPromise = gameSoundEffect.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      gameSoundEffect.play();
+    }).catch(error => {
+      console.log("Audio play prevented.", error);
+    });    
+  }
 }
