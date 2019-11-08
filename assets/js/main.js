@@ -221,6 +221,7 @@ function handleCardClick(event) {
 
 ////  Actions When Cards Do Not Match  ////
 function misMatchedCardsAction() {
+  const cardFlipBackDelay = [1500, 1000, 500];
   matchAttempts++;
   setTimeout(function() {   // resetting after card mismatch (delay)
     twoCardsClicked = false;
@@ -228,7 +229,7 @@ function misMatchedCardsAction() {
     secondCardClicked.removeClass("isFlipped");
     clearCardsClicked();
     clearClickedCardsImageURLs();
-  }, 1500);
+  }, cardFlipBackDelay[currentDifficulty]);   // as user progresses difficulty levels the delay for flipping the cards back over will decrease
 }
 
 ////  Actions When Cards Match  ////
