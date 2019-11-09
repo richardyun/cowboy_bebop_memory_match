@@ -150,6 +150,10 @@ main {
   transform: scale(1.1);
 }
 .modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   position: absolute;
   top: 50%;
   left: 50%;
