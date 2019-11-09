@@ -27,14 +27,14 @@ const imageArrays = [
     'assets/images/card_faces/level_1_medium/ein_solo_01.jpg',
     'assets/images/card_faces/level_1_medium/ein_solo_02.jpg'
   ], [
-    'assets/images/card_faces/level_0_easy/edward.jpg',
-    'assets/images/card_faces/level_0_easy/ein.jpg',
-    'assets/images/card_faces/level_0_easy/faye.jpg',
-    'assets/images/card_faces/level_0_easy/jet.jpg',
-    'assets/images/card_faces/level_0_easy/julia.jpg',
-    'assets/images/card_faces/level_0_easy/punch_and_judy.jpg',
-    'assets/images/card_faces/level_0_easy/spike.jpg',
-    'assets/images/card_faces/level_0_easy/vicious.jpg'
+    'assets/images/card_faces/level_2_hard/spike_01.jpg',
+    'assets/images/card_faces/level_2_hard/spike_02.jpg',
+    'assets/images/card_faces/level_2_hard/spike_03.jpg',
+    'assets/images/card_faces/level_2_hard/spike_04.jpg',
+    'assets/images/card_faces/level_2_hard/spike_05.jpg',
+    'assets/images/card_faces/level_2_hard/spike_06.jpg',
+    'assets/images/card_faces/level_2_hard/spike_07.jpg',
+    'assets/images/card_faces/level_2_hard/spike_08.jpg'
   ]
 ];
 let shuffledDuplicatedImageArray = [];
