@@ -16,7 +16,16 @@ const imageArrays = [
     'assets/images/card_faces/level_0_easy/julia.jpg',
     'assets/images/card_faces/level_0_easy/punch_and_judy.jpg',
     'assets/images/card_faces/level_0_easy/spike.jpg',
-    'assets/images/card_faces/level_0_easy/vicious.jpg',
+    'assets/images/card_faces/level_0_easy/vicious.jpg'
+  ], [
+    'assets/images/card_faces/level_1_medium/ed_and_ein_group_01.jpg',
+    'assets/images/card_faces/level_1_medium/ed_and_ein_group_02.jpg',
+    'assets/images/card_faces/level_1_medium/ed_and_ein_group_03.jpg',
+    'assets/images/card_faces/level_1_medium/ed_and_ein_group_04.jpg',
+    'assets/images/card_faces/level_1_medium/ed_solo_01.jpg',
+    'assets/images/card_faces/level_1_medium/ed_solo_02.jpg',
+    'assets/images/card_faces/level_1_medium/ein_solo_01.jpg',
+    'assets/images/card_faces/level_1_medium/ein_solo_02.jpg'
   ], [
     'assets/images/card_faces/level_0_easy/edward.jpg',
     'assets/images/card_faces/level_0_easy/ein.jpg',
@@ -25,16 +34,7 @@ const imageArrays = [
     'assets/images/card_faces/level_0_easy/julia.jpg',
     'assets/images/card_faces/level_0_easy/punch_and_judy.jpg',
     'assets/images/card_faces/level_0_easy/spike.jpg',
-    'assets/images/card_faces/level_0_easy/vicious.jpg',
-  ], [
-    'assets/images/card_faces/level_0_easy/edward.jpg',
-    'assets/images/card_faces/level_0_easy/ein.jpg',
-    'assets/images/card_faces/level_0_easy/faye.jpg',
-    'assets/images/card_faces/level_0_easy/jet.jpg',
-    'assets/images/card_faces/level_0_easy/julia.jpg',
-    'assets/images/card_faces/level_0_easy/punch_and_judy.jpg',
-    'assets/images/card_faces/level_0_easy/spike.jpg',
-    'assets/images/card_faces/level_0_easy/vicious.jpg',
+    'assets/images/card_faces/level_0_easy/vicious.jpg'
   ]
 ];
 let shuffledDuplicatedImageArray = [];
