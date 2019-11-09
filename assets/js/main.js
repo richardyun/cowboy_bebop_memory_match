@@ -72,7 +72,6 @@ const musicArray = [
   'assets/audio/cowboy_bebop_tank!_op.mp3'
 ];
 let gameSoundEffect = null;
-let soundEffectURL = $(".gameOverModal").hasClass("showModal") ? 'assets/audio/game_over_sfx.mp3' : 'assets/audio/game_win_sfx.mp3';
 
 /////////////////////////////////////////
 ////////  INITIATE APP FUNCTION  ////////
@@ -132,7 +131,6 @@ function initiateApp() {
   } else {
     $(".levelHard").removeClass("lockedLevel");
   }
-
 }
 
 /////////////////////////////////////////////
@@ -384,7 +382,7 @@ function initializeAudio() {
 
   // setup all audio objects
   gameMusic = new Audio('assets/audio/cowboy_bebop_bell_peppers_&_beef_kendall_x_mukashi.mp3');   // first track for easy level
-  gameSoundEffect = new Audio(soundEffectURL);    // sound effect initialization
+  gameSoundEffect = new Audio('assets/audio/game_win_sfx.mp3');    // start with game win sound effect audio initialization
 
   // set up and play game music first track
   gameMusic.loop = true;
@@ -454,10 +452,10 @@ function fadeMusic() {
 ////  Sound Effect Play Function  ////
 function playGameEndSoundEffect() {
   // if the game-over modal is showing set the sound effect url to the game_over mp3, otherwise set it to the game_win mp3
-  // let soundEffectURL = $(".gameOverModal").hasClass("showModal") ? '/assets/audio/game_over_sfx.mp3' : '/assets/audio/game_win_sfx.mp3';
-  // const gameSoundEffect = new Audio(soundEffectURL);
+  let soundEffectURL = $(".gameOverModal").hasClass("showModal") ? 'assets/audio/game_over_sfx.mp3' : 'assets/audio/game_win_sfx.mp3';
+  gameSoundEffect.setAttribute('src', soundEffectURL);
   gameSoundEffect.loop = false;
-  gameSoundEffect.volume = 0.2;
+  gameSoundEffect.volume = 0.4;
   const playPromise = gameSoundEffect.play();
   if (playPromise !== undefined) {
     playPromise.then(() => {
