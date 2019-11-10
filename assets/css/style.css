@@ -80,6 +80,10 @@ body {
 /* CARDS */
 main {
   background-color: rgb(76, 86, 102);
+  /* background-image: url('/assets/images/textures_and_effects/cowboy_bebop_main_background_6.jpg'); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   border: 1px solid black;
   box-sizing: border-box;
   width: 99vh;
