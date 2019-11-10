@@ -5,7 +5,7 @@
 body {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(107, 123, 148);
+  background-color: rgb(50, 57, 68);
   margin: 0;
   padding: 0;
   display: flex;
@@ -80,11 +80,11 @@ body {
 /* CARDS */
 main {
   background-color: rgb(76, 86, 102);
-  /* background-image: url('/assets/images/textures_and_effects/cowboy_bebop_main_background_6.jpg'); */
+  background-image: url('../images/textures_and_effects/main_background_1.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border: 1px solid black;
+  border: 1px solid slategrey;
   box-sizing: border-box;
   width: 99vh;
   height: 99vh;
@@ -92,7 +92,7 @@ main {
 }
 .cardsContainer {
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid slategrey;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
@@ -118,7 +118,7 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: .2em solid black;
+  border: .2em solid slategrey;
   position: absolute;
   backface-visibility: hidden;
 }
