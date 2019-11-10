@@ -104,6 +104,7 @@ function initiateApp() {
   $("#difficultyDegree").text(difficultyLevel[currentDifficulty]);    // label to show the current difficulty level
   if (currentDifficulty === 0) {    // if the current level is 'EASY' then only the 'HELP'/ Instructions should show in the extras section
     $("#extraSectionTitle").text("Help");
+    $("#extrasContainer > .textureEffect").addClass("hidden");
     $("#extrasContainer").css({
       "background-color":"lightsteelblue", 
       "background-image":"url('assets/images/textures_and_effects/metal_08.jpg')", 
@@ -113,6 +114,7 @@ function initiateApp() {
     $(".gameInstructions").removeClass("hidden");
   } else {    // if the current level is higher than 'EASY' then the timer should show
     $("#extraSectionTitle").text("Timer");
+    $("#extrasContainer > .textureEffect").removeClass("hidden");
     $(".gameInstructions").addClass("hidden");
     $("#timerText").removeClass("hidden");
     $("#extrasContainer").css({
