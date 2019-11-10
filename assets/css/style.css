@@ -224,6 +224,31 @@ a {
   width: 80%;
 }
 
+/* TEXTURE EFFECTS */
+.difficultyContent, .statsContent {
+  position: relative;
+  overflow: hidden;
+}
+.textureEffect {
+  max-height: 100%;
+  position: absolute;
+}
+#difficultyContainer>.textureEffect {
+  filter: invert(1);
+  left: 5%;
+}
+#gameCountContainer>.textureEffect {
+  filter: invert(1);
+}
+#matchAttemptsContainer>.textureEffect {
+  right: 0;
+}
+#matchAccuracyContainer>.textureEffect {
+  left: 0;
+}
+#extrasContainer>.textureEffect {
+  filter: invert(1);
+}
 
 
 /*////////////////////////////
