@@ -352,6 +352,7 @@ a {
   main {
     width: 99vw;
     height: 99vw;
+    background-size: cover;
   }
   .modalContent {
     width: 80vw;
