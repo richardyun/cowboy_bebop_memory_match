@@ -47,8 +47,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.statsTextTitle, .statsText, .difficultyLevel, .musicPlayer, .winMessage, .preGameMessage, .gameOverMessage, p {
+.statsText, #difficultyDegree, .winMessage, .preGameMessage, .gameOverMessage, p {
   font-family: "Cute Font", cursive;
+}
+.statsTextTitle, #difficultyTitle, .musicPlayer {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 6vmin;
 }
 .hidden {
   display: none;
@@ -251,169 +255,10 @@ a {
 }
 
 
+
 /*////////////////////////////
 ////////  RESPONSIVE  ////////
 ////////////////////////////*/
-
-/* iPad - LANDSCAPE - 3/4/Pro-9.7" */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
-  and (orientation: landscape) 
-  and (-webkit-min-device-pixel-ratio: 2) {
-  body {
-    flex-direction: row;
-  }
-  .asideOne, .asideTwo {
-    flex-direction: column;
-    width: 12.5%;
-    height: 99vh;
-  }
-  .asideOneItems, .asideTwoItems {
-    flex-direction: column;
-    width: 100%;
-    height: 25vmin;
-  }
-  .statsContent, .difficultyContent, .musicContent {
-    height: 49.5%;
-    width: 100%;
-    font-size: 5.5vmin;
-  }
-  #bannerContainer {
-    width: 100%;
-    height: 50vmin;
-    /* background-image: url('../images/cowboy_bebop_art_portrait.jpg'); */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  main {
-    width: 99vh;
-    height: 99vh;
-  }
-  .modalContent {
-    width: 80vh;
-    height: 80vh;
-  }
-  p {
-    font-size: 8vmin;
-  }
-  .musicButton, .gameInstructions {
-    font-size: 2.5vmin;
-    width: 90%;
-    height: 60%;
-  }
-}
-
-/* iPad - PORTRAIT - 3/4/Pro-9.7" */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
-  and (orientation: portrait) 
-  and (-webkit-min-device-pixel-ratio: 2) {
-  body {
-    flex-direction: column;
-  }
-  .asideOne, .asideTwo {
-    flex-direction: row;
-    width: 99.5vw;
-    height: 16%;
-  }
-  .asideOneItems, .asideTwoItems {
-    flex-direction: column;
-    height: 100%;
-    width: 21.5vmin;
-  }
-  .asideTwoItems {
-    width: 24.5vmin;
-  }
-  .statsContent, .difficultyContent, .musicContent {
-    height: 49%;
-    width: 100%;
-    font-size: 7vmin;
-  }
-  #bannerContainer {
-    height: 100%;
-    width: 55vmin;
-    /* background-image: url('../images/cowboy_bebop_art_landscape.jpg'); */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  main {
-    width: 99vw;
-    height: 99vw;
-  }
-  .modalContent {
-    width: 80vw;
-    height: 80vw;
-  }
-  p {
-    font-size: 8vmin;
-  }
-  .musicButton, .gameInstructions {
-    font-size: 3.5vmin;
-    width: 100%;
-    height: 75%;
-  }
-}
-
-
-
-/* iPhone X - LANDSCAPE */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: landscape) { 
-  body {
-    flex-direction: row;
-  }
-  .asideOne, .asideTwo {
-    flex-direction: column;
-    width: 24.5%;
-    height: 99.5vh;
-  }
-  .asideOneItems, .asideTwoItems {
-    flex-direction: column;
-    width: 99.5%;
-    height: 25vmin;
-  }
-  .statsContent, .difficultyContent, .musicContent {
-    height: 49%;
-    width: 100%;
-    font-size: 13vmin;
-  }
-  #bannerContainer {
-    width: 100%;
-    height: 50vmin;
-    /* background-image: url('../images/cowboy_bebop_art_portrait.jpg'); */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  main {
-    width: 99vh;
-    height: 99vh;
-  }
-  .modalContent {
-    width: 80vh;
-    height: 80vh;
-  }
-  p {
-    font-size: 8vmin;
-  }
-  .musicButton, .gameInstructions {
-    font-size: 5vmin;
-    width: 100%;
-    height: 90%;
-  }
-  .musicButton {
-    width: 60%;
-  }
-}
-
-
 
 /* iPhone 6/7/8 - LANDSCAPE */
 @media only screen 
@@ -438,6 +283,9 @@ a {
     height: 49%;
     width: 100%;
     font-size: 12vmin;
+  }
+  .statsTextTitle, #difficultyTitle, .musicPlayer {
+    font-size: 7vmin;
   }
   #bannerContainer {
     width: 100%;
@@ -540,6 +388,62 @@ a {
 
 
 
+/* iPhone X - LANDSCAPE */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+  body {
+    flex-direction: row;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: column;
+    width: 24.5%;
+    height: 99.5vh;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: column;
+    width: 99.5%;
+    height: 25vmin;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 49%;
+    width: 100%;
+    font-size: 13vmin;
+  }
+  .statsTextTitle, #difficultyTitle, .musicPlayer {
+    font-size: 8vmin;
+  }
+  #bannerContainer {
+    width: 100%;
+    height: 50vmin;
+    /* background-image: url('../images/cowboy_bebop_art_portrait.jpg'); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vh;
+    height: 99vh;
+  }
+  .modalContent {
+    width: 80vh;
+    height: 80vh;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 5vmin;
+    width: 100%;
+    height: 90%;
+  }
+  .musicButton {
+    width: 60%;
+  }
+}
+
 /* iPhone X - PORTRAIT (also seems to be influenced by iPhone 6/7/8 Portrait styling) */
 @media only screen 
   and (min-device-width: 375px) 
@@ -599,3 +503,117 @@ a {
     height: 60%;
   }
 }
+
+
+
+/* iPad - LANDSCAPE - 3/4/Pro-9.7" */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  body {
+    flex-direction: row;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: column;
+    width: 12.5%;
+    height: 99vh;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: column;
+    width: 100%;
+    height: 25vmin;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 49.5%;
+    width: 100%;
+    font-size: 6.5vmin;
+  }
+  .statsTextTitle, #difficultyTitle, .musicPlayer {
+    font-size: 4vmin;
+  }
+  #bannerContainer {
+    width: 100%;
+    height: 50vmin;
+    /* background-image: url('../images/cowboy_bebop_art_portrait.jpg'); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vh;
+    height: 99vh;
+  }
+  .modalContent {
+    width: 80vh;
+    height: 80vh;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 2.5vmin;
+    width: 90%;
+    height: 60%;
+  }
+}
+
+/* iPad - PORTRAIT - 3/4/Pro-9.7" */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  body {
+    flex-direction: column;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: row;
+    width: 99.5vw;
+    height: 16%;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: column;
+    height: 100%;
+    width: 21.5vmin;
+  }
+  .asideTwoItems {
+    width: 24.5vmin;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 49%;
+    width: 100%;
+    font-size: 7.5vmin;
+  }
+  .statsTextTitle, #difficultyTitle, .musicPlayer {
+    font-size: 5vmin;
+  }
+  #bannerContainer {
+    height: 100%;
+    width: 55vmin;
+    /* background-image: url('../images/cowboy_bebop_art_landscape.jpg'); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vw;
+    height: 99vw;
+  }
+  .modalContent {
+    width: 80vw;
+    height: 80vw;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 3.5vmin;
+    width: 100%;
+    height: 75%;
+  }
+}
+
+
+
