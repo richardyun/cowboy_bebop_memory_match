@@ -106,6 +106,7 @@ function initiateApp() {
     $("#extraSectionTitle").text("Help");
     $("#extrasContainer").css({
       "background-color":"lightsteelblue", 
+      "background-image":"url('assets/images/textures_and_effects/metal_08.jpg')", 
       "color":"black"
     });
     $("#timerText").addClass("hidden");
@@ -115,6 +116,7 @@ function initiateApp() {
     $(".gameInstructions").addClass("hidden");
     $("#timerText").removeClass("hidden");
     $("#extrasContainer").css({
+      "background-image":"none", 
       "background-color":"black", 
       "color":"lightgreen"
     });
