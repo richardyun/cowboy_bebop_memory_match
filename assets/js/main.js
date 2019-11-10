@@ -247,8 +247,7 @@ function matchedCardsAction() {
 
 ////  Check Win Condition  ////
 function gameWinConditionCheck() {
-  // if (cardMatches === maxCardMatches) {
-  if (cardMatches === 1) {
+  if (cardMatches === maxCardMatches) {
     gamesPlayed++;
     fadeMusic();
     playGameEndSoundEffect();
