@@ -1,0 +1,615 @@
+/*//////////////////////
+////////  MAIN  ////////
+//////////////////////*/
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(50, 57, 68);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.asideOne, .asideTwo, .asideOneItems, .asideTwoItems, .statsContent, .difficultyContent, .musicContent, .statsTextTitle, .statsText {
+  display: flex;
+  justify-content: space-evenly;
+}
+.asideOne, .asideTwo {
+  flex-direction: column;
+  width: 26%;
+  height: 99vh;
+}
+.asideOneItems, .asideTwoItems {
+  flex-direction: column;
+  width: 100%;
+  height: 24.5vmin;
+}
+.statsContent, .difficultyContent, .musicContent {
+  align-items: center;
+  text-align: center;
+  border: 0.2rem solid black;
+  box-sizing: border-box;
+  height: 49.5%;
+  width: 100%;
+  font-size: 10vmin;
+}
+.statsTextTitle, .statsText {
+  align-items: center;
+}
+#bannerContainer {
+  width: 100%;
+  height: 50vmin;
+  background-image: url('../images/banners/banner_desktop.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.statsText, #difficultyDegree, .winMessage, .preGameMessage, .gameOverMessage, p {
+  font-family: "Cute Font", cursive;
+}
+.statsTextTitle, #difficultyTitle, .musicPlayer {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 6vmin;
+}
+.hidden {
+  display: none;
+}
+#difficultyTitle, .musicContent, #gameCountTitle, #matchAttemptsTitle, #matchAccuracyTitle, #extrasTitle {
+  background-color: lightsteelblue;
+}
+#difficultyContainer, #gameCountContainer, #matchAttemptsContainer, #matchAccuracyContainer {
+  color: lightgreen;
+  background-color: black;
+}
+.flash {
+  animation-name: flash;
+   animation-duration: 0.2s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+   animation-play-state: running;
+}
+@keyframes flash {
+   from {color: red;}
+   to {color: white;}
+}
+
+/* CARDS */
+main {
+  background-color: rgb(76, 86, 102);
+  background-image: url('../images/textures_and_effects/main_background_1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid slategrey;
+  box-sizing: border-box;
+  width: 99vh;
+  height: 99vh;
+  margin: .1rem;
+}
+.cardsContainer {
+  height: 100%;
+  border: 1px solid slategrey;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+.scene {
+  height: 25%;
+  width: 25%;
+  perspective: 600px;
+}
+.card {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.image {
+  height: 97%;
+  width: 97%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: .2em solid slategrey;
+  position: absolute;
+  backface-visibility: hidden;
+}
+.cardFace {
+  z-index: 2;
+  border: none;
+  animation: rotation 4s infinite linear;
+}  
+@keyframes rotation {
+  50% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.cardFaceBackground {
+  z-index: 1;
+}
+.cardBack {
+  transform: rotateY(180deg);
+}
+.card.isFlipped {
+  transform: rotateY(180deg);
+}
+
+/* MODALS */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+}
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: lightgreen;
+  padding: 1rem 1.5rem;
+  border: .3rem solid lightsteelblue;
+  border-radius: 0.5rem;
+  text-align: center;
+  width: 80vh;
+  height: 80vh;
+}
+.showModal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.winMessage, .finalMessage, .preGameMessage, .gameOverMessage, .instructionText, p {
+  font-size: 8vmin;
+  margin: 0;
+}
+.lockedLevelText>p {
+  font-size: 15vmin;
+}
+a {
+  color: aqua;
+}
+
+/* BUTTONS */
+.startGame, .resetGame, .closeFinalModal, .closeInstructionModal, .musicButton, .gameInstructions {
+  border-radius: 10px;
+  background-color: whitesmoke;
+  border: 0.5vmin solid black;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+}
+.musicButton, .gameInstructions {
+  font-size: 6vmin;
+  padding: 1vmin;
+  margin: 1vmin;
+  width: 100%;
+  height: 90%;
+}
+.closeFinalModal, .closeInstructionModal {
+  font-size: 5vmin;
+  padding: 1vmin;
+  width: 40%;
+  margin: 1vmin;
+}
+.startGame, .resetGame {
+  font-size: 6vmin;
+  padding: 2vmin;
+  width: 60%;
+  margin: 2vmin;
+}
+.lockedLevel {
+  background-color: darkgray;
+  border: 0.5vmin solid gray;
+  color: gray;
+}
+.musicButton {
+  width: 70%;
+}
+.closeFinalModal {
+  width: 80%;
+}
+
+/* TEXTURE EFFECTS */
+.difficultyContent, .statsContent {
+  position: relative;
+  overflow: hidden;
+}
+.textureEffect {
+  max-height: 100%;
+  position: absolute;
+}
+#difficultyContainer>.textureEffect {
+  filter: invert(1);
+  left: 5%;
+}
+#gameCountContainer>.textureEffect {
+  filter: invert(1);
+}
+#matchAttemptsContainer>.textureEffect {
+  right: 0;
+}
+#matchAccuracyContainer>.textureEffect {
+  left: 0;
+}
+#extrasContainer>.textureEffect {
+  filter: invert(1);
+}
+
+
+
+/*////////////////////////////
+////////  RESPONSIVE  ////////
+////////////////////////////*/
+
+
+/* iPad - LANDSCAPE - 3/4/Pro-9.7" */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  body {
+    flex-direction: row;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: column;
+    width: 12.5%;
+    height: 99vh;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: column;
+    width: 100%;
+    height: 25vmin;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 49.5%;
+    width: 100%;
+    font-size: 6.5vmin;
+  }
+  .statsTextTitle, #difficultyTitle, .musicPlayer {
+    font-size: 4vmin;
+  }
+  #bannerContainer {
+    width: 100%;
+    height: 50vmin;
+    background-image: url('../images/banners/banner_ipad_landscape.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vh;
+    height: 99vh;
+  }
+  .modalContent {
+    width: 80vh;
+    height: 80vh;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 2.5vmin;
+    width: 90%;
+    height: 60%;
+  }
+}
+
+
+/* iPad - PORTRAIT - 3/4/Pro-9.7" */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  body {
+    flex-direction: column;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: row;
+    width: 99.5vw;
+    height: 16%;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: column;
+    height: 100%;
+    width: 21.5vmin;
+  }
+  .asideTwoItems {
+    width: 24.5vmin;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 49%;
+    width: 100%;
+    font-size: 7.5vmin;
+  }
+  .statsTextTitle, #difficultyTitle, .musicPlayer {
+    font-size: 5vmin;
+  }
+  #bannerContainer {
+    height: 100%;
+    width: 55vmin;
+    background-image: url('../images/banners/banner_ipad_portrait.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vw;
+    height: 99vw;
+    background-size: cover;
+  }
+  .modalContent {
+    width: 80vw;
+    height: 80vw;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 3.5vmin;
+    width: 100%;
+    height: 75%;
+  }
+}
+
+
+/* iPhone X - LANDSCAPE */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+  body {
+    flex-direction: row;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: column;
+    width: 26.5%;
+    height: 99.5vh;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: column;
+    width: 99.5%;
+    height: 25vmin;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 49%;
+    width: 100%;
+    font-size: 13vmin;
+  }
+  .statsTextTitle, #difficultyTitle, .musicPlayer {
+    font-size: 8vmin;
+  }
+  #bannerContainer {
+    width: 100%;
+    height: 50vmin;
+    background-image: url('../images/banners/banner_iphone_x_landscape.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vh;
+    height: 99vh;
+  }
+  .modalContent {
+    width: 80vh;
+    height: 80vh;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 5vmin;
+    width: 100%;
+    height: 90%;
+  }
+  .musicButton {
+    width: 60%;
+  }
+}
+
+
+/* iPhone 6/7/8 - LANDSCAPE */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+  body {
+    flex-direction: row;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: column;
+    width: 21.5%;
+    height: 99.5vh;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: column;
+    width: 99%;
+    height: 25vmin;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 49%;
+    width: 100%;
+    font-size: 12vmin;
+  }
+  .statsTextTitle, #difficultyTitle, .musicPlayer {
+    font-size: 7vmin;
+  }
+  #bannerContainer {
+    width: 100%;
+    height: 50vmin;
+    background-image: url('../images/banners/banner_iphone_678_landscape.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vh;
+    height: 99vh;
+  }
+  .modalContent {
+    width: 80vh;
+    height: 80vh;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 6vmin;
+    width: 100%;
+    height: 90%;
+  }
+}
+
+
+/* iPhone 6/7/8 - PORTRAIT */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+  body {
+    flex-direction: column;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 99vw;
+    height: 21.5%;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: row;
+    height: 49%;
+    width: 50%;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 99%;
+  }
+  #difficultyTitle, #musicContainer {
+    width: 54%;
+  }
+  #difficultyContainer, #musicTitle {
+    width: 45%;
+  }
+  #gameCountTitle, #gameCountContainer, #matchAttemptsTitle, #matchAttemptsContainer {
+    font-size: 10vmin;
+  }  
+  #gameCountTitle, #matchAttemptsTitle, #extrasContainer {
+    width: 65%;
+  }
+  #gameCountContainer, #matchAttemptsContainer, #extrasTitle {
+    width: 34%;
+  }
+  #matchAccuracyTitle, #matchAccuracyContainer, #extrasTitle, #extrasContainer, .difficultyContent, .musicContent {
+    font-size: 9vmin;
+  }
+  #matchAccuracyTitle {
+    width: 61%;
+  }
+  #matchAccuracyContainer {
+    width: 38%;
+  }
+  #bannerContainer {
+    height: 50%;
+    width: 100%;
+    background-image: url('../images/banners/banner_iphone_678_portrait.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vw;
+    height: 99vw;
+  }
+  .modalContent {
+    width: 80vw;
+    height: 80vw;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 5vmin;
+    width: 100%;
+    height: 60%;
+  }
+}
+
+
+/* iPhone X - PORTRAIT (also seems to be influenced by iPhone 6/7/8 Portrait styling) */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+  body {
+    flex-direction: column;
+  }
+  .asideOne, .asideTwo {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 99vw;
+  }
+  .asideOne {
+    height: 34%;
+  }
+  .asideTwo {
+    height: 19%;
+  }
+  .asideOneItems, .asideTwoItems {
+    flex-direction: row;
+    height: 49%;
+    width: 50%;
+  }
+  .asideOneItems {
+    height: 30%;
+  }
+  .statsContent, .difficultyContent, .musicContent {
+    height: 99%;
+  }
+  .statsText, .statsTextTitle {
+    height: 100%;
+  }
+  #bannerContainer {
+    height: 70%;
+    width: 100%;
+    background-image: url('../images/banners/banner_iphone_x_portrait.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  main {
+    width: 99vw;
+    height: 99vw;
+  }
+  .modalContent {
+    width: 80vw;
+    height: 80vw;
+  }
+  p {
+    font-size: 8vmin;
+  }
+  .musicButton, .gameInstructions {
+    font-size: 4.5vmin;
+    width: 100%;
+    height: 60%;
+  }
+}

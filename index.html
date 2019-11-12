@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://kit.fontawesome.com/e5b86bd8c1.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font|Fjalla+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Cowboy Bebop Memory Match</title>
+</head>
+<body>
+  <aside class="asideOne">
+      <div class="bannerContent" id="bannerContainer"></div>
+    <div class="asideOneItems">
+      <div class="difficultyContent" id="difficultyTitle" style="background-image: url('assets/images/textures_and_effects/metal_01.jpg');">
+        <div class="difficultyLevel">Difficulty</div>
+      </div>
+      <div class="difficultyContent" id="difficultyContainer">
+        <img src="assets/images/textures_and_effects/broken_glass_1.png" class="textureEffect">
+        <div class="difficultyLevel" id="difficultyDegree">Easy</div>
+      </div>
+    </div>
+    <div class="asideOneItems">
+      <div class="musicContent" id="musicTitle" style="background-image: url('assets/images/textures_and_effects/metal_02.jpg');">
+        <div class="musicPlayer">Music</div>
+      </div>
+      <div class="musicContent" id="musicContainer" style="background-image: url('assets/images/textures_and_effects/metal_07.jpg');">
+        <button class="musicButton">
+          <i class="fas fa-play"></i>
+          <i class="fas fa-pause"></i>
+        </button>
+      </div>
+    </div>
+  </aside>
+  <main>
+    <div class="cardsContainer"></div>
+  </main>
+  <aside class="asideTwo">
+    <div class="asideTwoItems">
+      <div class="statsContent" id="gameCountTitle" style="background-image: url('assets/images/textures_and_effects/metal_03.jpg');">
+        <div class="statsTextTitle">Played</div>
+      </div>
+      <div class="statsContent" id="gameCountContainer">
+        <img src="assets/images/textures_and_effects/broken_glass_2.png" class="textureEffect">
+        <div class="statsText" id="gameCountNumber">0</div>
+      </div>
+    </div>
+    <div class="asideTwoItems">
+      <div class="statsContent" id="matchAttemptsTitle" style="background-image: url('assets/images/textures_and_effects/metal_04.jpg');">
+        <div class="statsTextTitle">Attempts</div>
+      </div>
+      <div class="statsContent" id="matchAttemptsContainer">
+        <img src="assets/images/textures_and_effects/broken_glass_3.png" class="textureEffect">
+        <div class="statsText" id="matchAttemptsNumber">0</div>
+      </div>
+    </div>
+    <div class="asideTwoItems">
+      <div class="statsContent" id="matchAccuracyTitle" style="background-image: url('assets/images/textures_and_effects/metal_05.jpg');">
+        <div class="statsTextTitle">Accuracy</div>
+      </div>
+      <div class="statsContent" id="matchAccuracyContainer">
+        <img src="assets/images/textures_and_effects/broken_glass_4.png" class="textureEffect">
+        <div class="statsText" id="matchAccuracyNumber">0%</div>
+      </div>      
+    </div>
+    <div class="asideTwoItems">
+      <div class="statsContent" id="extrasTitle" style="background-image: url('assets/images/textures_and_effects/metal_06.jpg');">
+        <div class="statsTextTitle" id="extraSectionTitle">Help</div>
+      </div>
+      <div class="statsContent" id="extrasContainer" style="background-image: url('assets/images/textures_and_effects/metal_08.jpg');">
+        <img src="assets/images/textures_and_effects/broken_glass_5.png" class="textureEffect">
+        <div class="statsText" id="extraSectionContainer">
+          <div class="statsText" id="timerText"></div>
+          <button class="gameInstructions">Instructions</button>
+        </div>
+      </div>      
+    </div>
+  </aside>
+  <div class="modal preGame showModal">
+      <div class="modalContent preGameMessage">
+        <p><strong>Welcome!</strong></p>
+        <p>This is a Cowboy Bebop themed card-matching game!</p>
+        <p>Please enjoy! Ready?</p>
+        <p>3... 2... 1...</p>
+        <p>"Bang." - Spike Spiegel</p>
+        <div class="startGameButtonContainer">
+          <button class="startGame">PLAY</button>
+        </div>      
+      </div>
+    </div>
+  <div class="modal winModal">
+    <div class="modalContent winMessage">
+      <p><strong>Congratulations, you've won!</strong></p>
+      <p>Select a difficulty level to play again!</p>
+      <div class="gameLevelButtonContainer">
+        <button class="resetGame levelEasy">Easy</button>
+        <button class="resetGame levelMedium">Medium</button>
+        <button class="resetGame levelHard">Hard</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal finalModal">
+    <div class="modalContent finalMessage">
+      <p><strong>Thank you for playing!</strong></p>
+      <p>You are a memory master!</p>
+      <p>Please visit my portfolio <a href="https://www.richard-yun.com" target="_blank">HERE</a> to see other projects!</p>
+      <p>Or press the button below to play again!</p>
+      <div class="gameLevelButtonContainer">
+        <button class="closeFinalModal">Back to Game</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal gameOverModal">
+    <div class="modalContent gameOverMessage">
+      <p><strong>Game Over.</strong></p>
+      <p>The timer has run out.</p>
+      <p>Remember to keep track of the timer for Medium and Hard levels.</p>
+      <p>Press the button below to have another go!</p>
+      <div class="tryAgainButtonContainer">
+        <button class="resetGame tryAgain">Try Again</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal instructionModal">
+    <div class="modalContent instructionText">
+      <p><strong>HOW TO PLAY</strong></p>
+      <p>Click on square images to reveal the hidden pictures. 
+        Win by matching all the pictures on the board. 
+        Beat levels to advance difficulty. 
+        Good luck!
+      </p>
+      <p>See you, Space Cowboy!</p>
+      <div class="closeGameInstruction">
+        <button class="closeInstructionModal">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal lockedLevelModal">
+    <div class="modalContent lockedLevelText">
+      <p>Beat Medium Difficulty to unlock the Hard Difficulty level!</p>
+    </div>
+  </div>
+</body>
+</html>
