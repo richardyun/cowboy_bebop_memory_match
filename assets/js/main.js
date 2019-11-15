@@ -394,6 +394,7 @@ function initializeAudio() {
   if (playPromise !== undefined) {
     playPromise.then(() => {
       gameMusic.play();
+      $(".play").css("color", "lightgreen");
       isMusicPlaying = true;
     }).catch(error => {
       console.log("Audio play prevented.", error);
@@ -416,6 +417,7 @@ function changeMusic() {
   if (playPromise !== undefined) {
     playPromise.then(() => {
       gameMusic.play();
+      $(".play").css("color", "lightgreen");
       isMusicPlaying = true;
     }).catch(error => {
       console.log("Audio play prevented.", error);
@@ -428,9 +430,13 @@ function changeMusic() {
 function toggleAudio() {
   if (isMusicPlaying) {
     gameMusic.pause();
+    $(".pause").css("color", "lightgreen");
+    $(".play").css("color", "black");
     isMusicPlaying = false;
   } else {
     gameMusic.play();
+    $(".play").css("color", "lightgreen");
+    $(".pause").css("color", "black");
     isMusicPlaying = true;
   }
 }
