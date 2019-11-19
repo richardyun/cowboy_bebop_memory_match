@@ -265,6 +265,9 @@ a {
 .startGame:hover, .resetGame:hover, .closeFinalModal:hover, .closeInstructionModal:hover, .musicButton:hover, .gameInstructions:hover, .focus {
   border: 0.5vmin solid lightgreen;
 }
+.cardFace:hover {
+  cursor: pointer;
+}
 
 
 /*////////////////////////////
