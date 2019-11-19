@@ -84,7 +84,7 @@ function initiateApp() {
   shuffledDuplicatedImageArray = shuffleArray(duplicatedImageArray);    // use the shuffleArray function to randomly arrange the newly duplicated images
   createMultipleCardElements();   // use the createMultipleCardElements function to generate card elements using the array of duplicated, shuffled images
 
-  ////  Click Handlers  ////
+  ////  Click & Effect Handlers  ////
   $(".scene").on("click", ".card", handleCardClick);    // card
   $(".gameInstructions").click(function() {   // 'INSTRUCTIONS' button
     $(".instructionModal").addClass("showModal");
@@ -96,6 +96,13 @@ function initiateApp() {
   $(".closeFinalModal").click(function() {    // 'BACK TO GAME' button in the final win modal
     $(".finalModal").removeClass("showModal");
   });
+  $(".cardFace").hover(
+    function(event) {
+      $(event.target).next().addClass("focus");
+    }, function(event) {
+      $(event.target).next().removeClass("focus");
+    }
+  );
 
   ////  Game Difficulty  ////
   if (currentDifficulty > highestDifficultyCompleted) {   // keeps track of the highest level difficulty played

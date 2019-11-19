@@ -1,6 +1,9 @@
+
+
 /*//////////////////////
 ////////  MAIN  ////////
 //////////////////////*/
+
 
 body {
   height: 100vh;
@@ -258,6 +261,10 @@ a {
   filter: invert(1);
 }
 
+/* HOVER EFFECTS */
+.startGame:hover, .resetGame:hover, .closeFinalModal:hover, .closeInstructionModal:hover, .musicButton:hover, .gameInstructions:hover, .focus {
+  border: 0.5vmin solid lightgreen;
+}
 
 
 /*////////////////////////////
