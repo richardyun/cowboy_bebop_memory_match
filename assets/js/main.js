@@ -206,6 +206,8 @@ function resetGame() {
   $(".image").removeClass("isFlipped");
   $(".cardsContainer").empty();
   clearInterval(intervalID);
+  $(".play").css("color", "lightgreen");
+  $(".pause").css("color", "black");
   initiateApp();
 }
 
