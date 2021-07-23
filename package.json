@@ -1,0 +1,22 @@
+{
+  "name": "cowboy-bebop",
+  "version": "1.0.0",
+  "description": "A game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realtonychung/cowboy_bebop_memory_match.git"
+  },
+  "author": "Tony",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/realtonychung/cowboy_bebop_memory_match/issues"
+  },
+  "homepage": "https://github.com/realtonychung/cowboy_bebop_memory_match#readme",
+  "dependencies": {
+    "react": "^17.0.2"
+  }
+}
